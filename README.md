@@ -33,7 +33,7 @@ or in percent of the surrounding rectangle.
 Via Composer
 
 ``` bash
-$ composer require adiuvaris/reportlib
+$ composer require Adiuvaris/ReportLib
 ```
 
 ## Usage
@@ -43,6 +43,7 @@ $ composer require adiuvaris/reportlib
 include_once "src/Report.php";
 use Adi\ReportLib as ReportLib;
 $rp = new ReportLib\Report();
+$rp->getBody()->AddText("ReportLib test.",ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL));
 $rp->output(__DIR__ . "/test.pdf");
 ```
  
