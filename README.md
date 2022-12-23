@@ -4,7 +4,7 @@
 Via Composer
 
 ``` bash
-$ composer require adi/reportlib
+$ composer require adiuvaris/reportlib
 ```
 
 ## Usage
