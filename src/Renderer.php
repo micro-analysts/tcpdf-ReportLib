@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : Renderer.php
  * // Version       : 1.0.0
- * // Last Update   : 21.12.22, 14:41
+ * // Last Update   : 23.12.22, 14:01
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -390,7 +390,7 @@ class Renderer
                 do {
                     $correction /= 2.0;
 
-                    $checkText = substr($text, 0, $len * $factor);
+                    $checkText = substr($text, 0, (int)($len * $factor));
                     $text_width = $this->pdf->GetStringWidth($checkText, $textStyle->getFontFamily(), $style, $textStyle->getSize());
 
                     if (round($text_width, 2) <= round($width, 2)) {
@@ -418,7 +418,7 @@ class Renderer
                 do {
                     $correction /= 2.0;
 
-                    $checkText = substr($text, 0, $len * $factor);
+                    $checkText = substr($text, 0, (int)($len * $factor));
                     $text_height = $this->calcTextSize($textStyle, $checkText, $hAlignment, $vAlignment, $width);
 
                     if (round($text_height->height, 2) <= round($height, 2)) {
