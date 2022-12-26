@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : Renderer.php
  * // Version       : 1.0.0
- * // Last Update   : 23.12.22, 14:01
+ * // Last Update   : 26.12.22, 07:03
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -38,6 +38,8 @@ include_once "Renderer.php";
 require __DIR__ . "/../vendor/autoload.php";
 use TCPDF;
 use TCPDF_COLORS;
+use TCPDF_STATIC;
+
 
 
 /**
@@ -102,8 +104,60 @@ class Renderer
      */
     public function getPageBounds(int $page = 0) : Rect
     {
+        if ($page == 0) {
+            $page = $this->getCurrentPage();
+        }
+
         $pageFormat = $this->getPageFormat($page);
-        return $pageFormat->getPageBounds($this->currentPage);
+
+        // calculate the page size in millimeters
+        $w = 210.0;
+        $h = 297.0;
+
+        if (key_exists($pageFormat->getPageSize(), TCPDF_STATIC::$page_formats)) {
+            $si = TCPDF_STATIC::$page_formats[$pageFormat->getPageSize()];
+            $w = $si[0]  * 25.4 / 72.0;
+            $h = $si[1]  * 25.4 / 72.0;
+        }
+
+        if ($pageFormat->getPageOrientation() == 'P') {
+            $size = new Size(round($w, 2), round($h, 2));
+        } else {
+            $size = new Size(round($h, 2), round($w, 2));
+        }
+
+        if ($pageFormat->isMirrorMargins()) {
+            if ($page % 2 == 0) {
+                $pageBounds = new Rect($pageFormat->getMarginRight(), $pageFormat->getMarginTop(),$size->width - $pageFormat->getMarginLeft(), $size->height - $pageFormat->getMarginBottom());
+            } else {
+                $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
+            }
+        } else {
+            $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
+        }
+        return $pageBounds;
+    }
+
+    /**
+     * Returns the printable width on the page,
+     * i.e. the width of the paper minus the left and right margins
+     * @param int $page Page number
+     * @return float
+     */
+    public function getPrintableWidth(int $page = 0) : float
+    {
+        return $this->getPageBounds($page)->getWidth();
+    }
+
+    /**
+     * Returns the printable height on the page,
+     * i.e. the height of the paper minus the top and bottom margins
+     * @param int $page Page number
+     * @return float
+     */
+    public function getPrintableHeight(int $page = 0) : float
+    {
+        return $this->getPageBounds($page)->getHeight();
     }
 
     /**
@@ -122,12 +176,8 @@ class Renderer
      * @param int $page
      * @return PageFormat
      */
-    protected function getPageFormat(int $page = 0) : PageFormat
+    protected function getPageFormat(int $page) : PageFormat
     {
-        if ($page == 0) {
-            $page = $this->getCurrentPage();
-        }
-
         while (!key_exists($page, $this->pageFormats)) {
             $page--;
         }
@@ -188,7 +238,7 @@ class Renderer
         }
 
         $pageFormat = $this->getPageFormat($this->currentPage);
-        $this->pdf->AddPage($pageFormat->getPageOrientation(), $pageFormat->getPageFormat());
+        $this->pdf->AddPage($pageFormat->getPageOrientation(), $pageFormat->getPageSize());
     }
 
     /**
@@ -315,7 +365,6 @@ class Renderer
     {
         $size = new Size();
 
-        $pageFormat = $this->getPageFormat();
         $style = $this->getStyle($textStyle);
         $hAlign = $hAlignment;
         $vAlign = $vAlignment;
@@ -343,12 +392,12 @@ class Renderer
             // fix rounding problems
             $size->width = $max * 1.01;
 
-            $this->pdf->MultiCell($pageFormat->getPrintableWidth(), 0, $textToPrint, 0, $hAlign, false, 1, null, null, true, 0, false, false, 0, $vAlign);
+            $this->pdf->MultiCell($this->getPrintableWidth(), 0, $textToPrint, 0, $hAlign, false, 1, null, null, true, 0, false, false, 0, $vAlign);
         }
 
         $end_y = $this->pdf->GetY();
         $end_page = $this->pdf->getPage();
-        $size->height = $end_y - $start_y + ($end_page - $start_page) * $pageFormat->getPrintableHeight();
+        $size->height = $end_y - $start_y + ($end_page - $start_page) * $this->getPrintableHeight();
         $this->pdf = $this->pdf->rollbackTransaction();
 
         return $size;

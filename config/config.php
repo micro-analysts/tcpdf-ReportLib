@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : config.php
  * // Version       : 1.0.0
- * // Last Update   : 22.12.22, 15:10
+ * // Last Update   : 26.12.22, 07:03
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -33,7 +33,7 @@ namespace Adi\ReportLib;
 /**
  * Default page format
  */
-const DEF_PAGE_FORMAT = 'A4';
+const DEF_PAGE_SIZE = 'A4';
 
 /**
  * Default orientation for pages

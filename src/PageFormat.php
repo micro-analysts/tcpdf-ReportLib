@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : PageFormat.php
  * // Version       : 1.0.0
- * // Last Update   : 22.12.22, 15:10
+ * // Last Update   : 26.12.22, 07:03
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * // 
@@ -33,9 +33,6 @@ namespace Adi\ReportLib;
 include_once __DIR__ . "/../config/config.php";
 include_once "Size.php";
 
-require __DIR__ . "/../vendor/autoload.php";
-use TCPDF_STATIC;
-
 
 /**
  * @class PageFormat
@@ -55,10 +52,10 @@ class PageFormat
     protected string $pageOrientation;
 
     /**
-     * Page format
+     * Page size (e.g. 'A4'
      * @var string
      */
-    protected string $pageFormat;
+    protected string $pageSize;
 
     /**
      * Top margin
@@ -92,7 +89,7 @@ class PageFormat
 
     /**
      * Class constructor
-     * @param string $pageFormat
+     * @param string $pageSize
      * @param string $pageOrientation
      * @param float $marginLeft
      * @param float $marginTop
@@ -100,9 +97,9 @@ class PageFormat
      * @param float $marginBottom
      * @param bool $mirrorMargins
      */
-    public function __construct(string $pageFormat = DEF_PAGE_FORMAT, string $pageOrientation = DEF_PAGE_ORIENTATION, float $marginLeft = DEF_PAGE_MARGIN_LEFT, float $marginTop = DEF_PAGE_MARGIN_TOP, float $marginRight = DEF_PAGE_MARGIN_RIGHT, float $marginBottom = DEF_PAGE_MARGIN_BOTTOM, bool $mirrorMargins = false)
+    public function __construct(string $pageSize = DEF_PAGE_SIZE, string $pageOrientation = DEF_PAGE_ORIENTATION, float $marginLeft = DEF_PAGE_MARGIN_LEFT, float $marginTop = DEF_PAGE_MARGIN_TOP, float $marginRight = DEF_PAGE_MARGIN_RIGHT, float $marginBottom = DEF_PAGE_MARGIN_BOTTOM, bool $mirrorMargins = false)
     {
-        $this->pageFormat = $pageFormat;
+        $this->pageSize = $pageSize;
         $this->pageOrientation = $pageOrientation;
         $this->marginLeft = $marginLeft;
         $this->marginTop = $marginTop;
@@ -120,11 +117,11 @@ class PageFormat
     }
 
     /**
-     * @param string $pageFormat
+     * @param string $pageSize
      */
-    public function setPageFormat(string $pageFormat): void
+    public function setPageSize(string $pageSize): void
     {
-        $this->pageFormat = $pageFormat;
+        $this->pageSize = $pageSize;
     }
 
     /**
@@ -138,9 +135,9 @@ class PageFormat
     /**
      * @return string
      */
-    public function getPageFormat() : string
+    public function getPageSize() : string
     {
-        return $this->pageFormat;
+        return $this->pageSize;
     }
 
     /**
@@ -221,62 +218,6 @@ class PageFormat
     public function setMirrorMargins(bool $mirrorMargins): void
     {
         $this->mirrorMargins = $mirrorMargins;
-    }
-
-    /**
-     * Returns the printable width on the page,
-     * i.e. the width of the paper minus the left and right margins
-     * @return float
-     */
-    public function getPrintableWidth() : float
-    {
-        return $this->getPageBounds()->getWidth();
-    }
-
-    /**
-     * Returns the printable height on the page,
-     * i.e. the height of the paper minus the top and bottom margins
-     * @return float
-     */
-    public function getPrintableHeight() : float
-    {
-        return $this->getPageBounds()->getHeight();
-    }
-
-    /**
-     * Returns a rectangle with the printable area on a page with this format.
-     * The orientation defines which is the longer side.
-     * @param int $page Page number that should be used - only needed when margins are mirrored
-     * @return Rect The printable area
-     */
-    public function getPageBounds(int $page = 0) : Rect
-    {
-        // calculate the page size in millimeters
-        $w = 210.0;
-        $h = 297.0;
-
-        if (key_exists($this->pageFormat, TCPDF_STATIC::$page_formats)) {
-            $si = TCPDF_STATIC::$page_formats[$this->pageFormat];
-            $w = $si[0]  * 25.4 / 72.0;
-            $h = $si[1]  * 25.4 / 72.0;
-        }
-
-        if ($this->pageOrientation == 'P') {
-            $size = new Size(round($w, 2), round($h, 2));
-        } else {
-            $size = new Size(round($h, 2), round($w, 2));
-        }
-
-        if ($this->mirrorMargins) {
-            if ($page % 2 == 0) {
-                $pageBounds = new Rect($this->marginRight, $this->marginTop,$size->width - $this->marginLeft, $size->height - $this->marginBottom);
-            } else {
-                $pageBounds = new Rect($this->marginLeft, $this->marginTop, $size->width - $this->marginRight, $size->height - $this->marginBottom);
-            }
-        } else {
-            $pageBounds = new Rect($this->marginLeft, $this->marginTop, $size->width - $this->marginRight, $size->height - $this->marginBottom);
-        }
-        return $pageBounds;
     }
 
 }
