@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : TableColumn.php
  * // Version       : 1.0.0
- * // Last Update   : 22.12.22, 11:58
+ * // Last Update   : 27.12.22, 06:47
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -235,14 +235,6 @@ class TableColumn
     public function getWidth(): float
     {
         return $this->width;
-    }
-
-    /**
-     * @param float $width
-     */
-    public function setWidth(float $width): void
-    {
-        $this->width = $width;
     }
 
     /**

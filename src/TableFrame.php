@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : TableFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 23.12.22, 06:49
+ * // Last Update   : 27.12.22, 06:47
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -839,18 +839,18 @@ class TableFrame extends ReportFrame
         $maxWidth -= $this->marginLeft;
         $maxWidth -= $this->marginRight;
 
-        $dCurWidth = 0.0;
+        $currWidth = 0.0;
         $firstCol = 0;
         for ($colNumber = 0; $colNumber < count($this->columns); $colNumber++) {
 
             /** @var TableColumn $column */
             $column = $this->columns[$colNumber];
 
-            $dCurWidth += $column->getWidthToUse();
+            $currWidth += $column->getWidthToUse();
 
-            if ($column->isLineBreak() && $dCurWidth > 0.0) {
+            if ($column->isLineBreak() && $currWidth > 0.0) {
 
-                $dDelta = $maxWidth / $dCurWidth * 10000;
+                $dDelta = $maxWidth / $currWidth * 10000;
                 $delta = (int)$dDelta;
                 $dDelta = $delta / 10000.0;
 
@@ -858,18 +858,16 @@ class TableFrame extends ReportFrame
 
                     /** @var TableColumn $column */
                     $column = $this->columns[$colNr];
-
-                    $column->setWidth($column->getWidth() * $dDelta);
-                    $column->setWidthToUse($column->getWidth());
+                    $column->setWidthToUse($column->getWidthToUse() * $dDelta);
                 }
 
                 $firstCol = $colNumber + 1;
-                $dCurWidth = 0.0;
+                $currWidth = 0.0;
             }
         }
 
-        if ($dCurWidth > 0.0) {
-            $dDelta = $maxWidth / $dCurWidth * 10000;
+        if ($currWidth > 0.0) {
+            $dDelta = $maxWidth / $currWidth * 10000;
             $delta = (int)$dDelta;
             $dDelta = $delta / 10000.0;
 
@@ -877,7 +875,6 @@ class TableFrame extends ReportFrame
 
                 /** @var TableColumn $column */
                 $column = $this->columns[$colNr];
-
                 $column->setWidthToUse($column->getWidthToUse() * $dDelta);
             }
         }
