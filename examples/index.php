@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : index.php
  * // Version       : 1.0.0
- * // Last Update   : 23.12.22, 06:18
+ * // Last Update   : 27.12.22, 09:44
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -232,6 +232,12 @@ echo '<'.'?'.'xml version="1.0" encoding="UTF-8"'.'?'.'>';
             One problem is an endless loop because of a circle dependency in the report structure.<br>
             A problem is also if a frame should be kept together but the size of the complete frame is bigger than the space on one page.<br>
             Another problem is when there is no space left in frame to put another frame into it. In the example the first text uses the whole width so the second text does not get any space.
+        </p>
+    </li>
+    <li><b>Example report</b>  [<a href="example_029.php" title="PDF [new window]" target="_blank">PDF</a>] [<a href="https://reportlib.adiuvaris.ch/example-29" title="PHP [new window]" target="_blank">Source</a>]
+        <p>A sample report with a header and a footer.<br>
+            It contains a list of the example files in a table with some information about the file<br>
+            On the following pages the content of the first three example files will be listed.
         </p>
     </li>
 </ol>
