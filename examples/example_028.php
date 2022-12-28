@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : example_028.php
  * // Version       : 1.0.0
- * // Last Update   : 23.12.22, 10:02
+ * // Last Update   : 28.12.22, 12:49
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -89,6 +89,19 @@ try {
     $errorText .=  "<br><br><br>";
     $body->clearFrames();
 }
+
+// Exception because of FixposFrame offsets outside printable area
+$f = new ReportLib\FixposFrame(0.0, 0.0);
+$f->AddHLine();
+$report->getBody()->AddFrame($f);
+try {
+    $report->output(__DIR__ . "/example_028.pdf");
+} catch (Exception $e) {
+    $errorText .= $e;
+    $errorText .=  "<br><br><br>";
+    $body->clearFrames();
+}
+
 
 echo $errorText;
 

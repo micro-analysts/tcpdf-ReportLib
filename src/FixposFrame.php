@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : FixposFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 10:46
+ * // Last Update   : 28.12.22, 13:17
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -141,8 +141,13 @@ class FixposFrame extends ContainerFrame
             $sizeState->fits = true;
         } else {
 
-            if ($this->offsetTop < $forRect->top || $this->offsetLeft < $forRect->left) {
-                if (!$this->overlay) {
+            if (!$this->overlay) {
+
+                // The offsets have to be inside the printable area for non overlay FixposFrames
+                if ($this->offsetTop < $r->getPageBounds()->left || $this->offsetLeft < $r->getPageBounds()->top) {
+                    throw new \Exception("Non overlay FixposFrame is outside the printable area");
+                }
+                if ($this->offsetTop < $forRect->top || $this->offsetLeft < $forRect->left) {
                     $sizeState->fits = false;
                     return $sizeState;
                 }
@@ -150,6 +155,10 @@ class FixposFrame extends ContainerFrame
 
             $rect->left = $this->offsetLeft;
             $rect->top = $this->offsetTop;
+            if ($this->overlay) {
+                $rect->right = $r->getPaperSize()->width;
+                $rect->bottom = $r->getPaperSize()->height;
+            }
 
             foreach ($this->frames as $frame) {
 
