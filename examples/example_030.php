@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : example_030.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 13:37
+ * // Last Update   : 28.12.22, 14:31
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -542,18 +542,18 @@ function addQrLines(ReportLib\Report $report): void
  * @param float $y
  * @param float $w
  * @param ReportLib\TextStyle $ts
- * @param float $abstand
+ * @param float $fontSize
  * @param string $hAlign
  * @return float
  */
-function addQrText(ReportLib\Report $report, string $text, float $x, float $y, float $w, ReportLib\TextStyle $ts, float $abstand, string $hAlign = 'L'): float
+function addQrText(ReportLib\Report $report, string $text, float $x, float $y, float $w, ReportLib\TextStyle $ts, float $fontSize, string $hAlign = 'L'): float
 {
     $qrTopOffset = 297.0 - 105.0;
     $f = new ReportLib\FixposFrame($x, $qrTopOffset + $y, true);
     $tf = $f->AddTextInBox($w, $text, $ts, $hAlign);
     $report->getBody()->AddFrame($f);
 
-    return $y + convertPtToMM($abstand);
+    return $y + convertPtToMM($fontSize);
 }
 
 
