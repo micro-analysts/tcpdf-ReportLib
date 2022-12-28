@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : example_030.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 10:30
+ * // Last Update   : 28.12.22, 13:37
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -40,16 +40,17 @@ $tsNormal->setSize(11.0);
 
 addHeader($report);
 addFooter($report);
-printAdresse($report);
-addProjektObjekt($report);
-addRechnungsDaten($report);
-addTitel($report);
-addTextGrund($report);
-addBetraege($report);
-addZahlbarBis($report);
-addTextAbschluss($report);
-addGrussFormel($report);
-addQRRechnung($report);
+
+printAddress($report);
+printProjectObject($report);
+printInvoiceData($report);
+printTitle($report);
+printInvoiceText($report);
+printValues($report);
+printPayable($report);
+printTextEnd($report);
+printGreetings($report);
+printQRSlip($report);
 
 try {
     $report->output(__DIR__ . "/example_030.pdf");
@@ -59,6 +60,7 @@ try {
 
 
 /**
+ * Adds the header which is printed on every page
  * @param ReportLib\Report $report
  * @return void
  */
@@ -80,7 +82,7 @@ function addHeader(ReportLib\Report $report): void
 
 
 /**
- * Adds the footer to the report
+ * Adds the footer to the report - printed only on the first page
  * @param ReportLib\Report $report
  * @return void
  */
@@ -104,10 +106,11 @@ function addFooter(ReportLib\Report $report): void
 
 
 /**
+ * Prints the address with a FixposFrame for window envelope
  * @param ReportLib\Report $report
  * @return void
  */
-function printAdresse(ReportLib\Report $report): void
+function printAddress(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $b = new ReportLib\FixposFrame(120.0, 50.0);
@@ -125,7 +128,7 @@ function printAdresse(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addProjektObjekt(ReportLib\Report $report): void
+function printProjectObject(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsBold = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::BOLD);
@@ -161,7 +164,7 @@ function addProjektObjekt(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addRechnungsDaten(ReportLib\Report $report): void
+function printInvoiceData(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsItalic = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::ITALIC);
@@ -183,14 +186,13 @@ function addRechnungsDaten(ReportLib\Report $report): void
     $hFrame->AddText("YYY-000-111-222", $tsItalic);
 
     $body->AddVDistance(5.0);
-
 }
 
 /**
  * @param ReportLib\Report $report
  * @return void
  */
-function addTitel(ReportLib\Report $report): void
+function printTitle(ReportLib\Report $report): void
 {
     $tsHeading1 = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::HEADING1);
 
@@ -204,27 +206,23 @@ function addTitel(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addTextGrund(ReportLib\Report $report): void
+function printInvoiceText(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
 
     $body = $report->getBody();
-
     $f = $body->AddHContainer();
-
     $f->AddText("According to the contract we allow ourselves to invoice as follows", $tsNormal);
-
     $body->AddVDistance(5.0);
-
 }
 
 /**
  * @param ReportLib\Report $report
  * @return void
  */
-function addBetraege(ReportLib\Report $report): void
+function printValues(ReportLib\Report $report): void
 {
-
+    // Names for the columns
     $COL_DESC = "desc";
     $COL_BASE = "base";
     $COL_FACTOR = "factor";
@@ -286,17 +284,15 @@ function addBetraege(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addZahlbarBis(ReportLib\Report $report): void
+function printPayable(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsBold = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::BOLD);
 
     $body = $report->getBody();
-
     $f = $body->AddHContainer();
     $f->AddTextInBox(35.0, "payable until", $tsNormal);
     $f->AddText("01.01.2024", $tsBold);
-
     $body->AddVDistance(1.0);
 }
 
@@ -304,7 +300,7 @@ function addZahlbarBis(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addTextAbschluss(ReportLib\Report $report): void
+function printTextEnd(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $body = $report->getBody();
@@ -316,24 +312,19 @@ function addTextAbschluss(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addGrussFormel(ReportLib\Report $report): void
+function printGreetings(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsItalic = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::ITALIC);
 
     $body = $report->getBody();
-
     $f = $body->AddVContainer();
     $f->setMarginLeft(95.0);
-
     $f->AddVDistance(30.0);
     $f->AddText("Kind regards", $tsNormal);
-
-
     $f->AddVDistance(10.0);
     $f->AddText("Michael Hodel", $tsItalic);
     $f->AddText("Vice President", $tsNormal);
-
 }
 
 
@@ -341,22 +332,20 @@ function addGrussFormel(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQRRechnung(ReportLib\Report $report): void
+function printQRSlip(ReportLib\Report $report): void
 {
     $body = $report->getBody();
 
     $body->AddPageBreak();
 
-    $qrTopOffset = 297.0 - 105.0;
-    // QR-Code
     addQrCodeZ($report);
-    addQrTitelE($report);
-    addQrAngabenE($report);
-    addQrBetragE($report);
-    addQrAnnahmestelleE($report);
-    addQrTitelZ($report);
-    addQrAngabenZ($report);
-    addQrBetragZ($report);
+    addQRTitleE($report);
+    addQRDataE($report);
+    addQRValueE($report);
+    addQRE($report);
+    addQRTitleZ($report);
+    addQRDataZ($report);
+    addQRValueZ($report);
     addQrLines($report);
 }
 
@@ -377,7 +366,7 @@ function addQrCodeZ(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrTitelE(ReportLib\Report $report): void
+function addQRTitleE(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $ts = ReportLib\TextStyles::addTextStyle("TitleE", $tsNormal);
@@ -385,14 +374,13 @@ function addQrTitelE(ReportLib\Report $report): void
     $ts->setSize(11.0);
 
     addQrText($report, "Empfangsschein", 5.0, 5.0, 52.0, $ts, 0.0);
-
 }
 
 /**
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrTitelZ(ReportLib\Report $report): void
+function addQRTitleZ(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $ts = ReportLib\TextStyles::addTextStyle("TitleE", $tsNormal);
@@ -407,7 +395,7 @@ function addQrTitelZ(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrAngabenE(ReportLib\Report $report): void
+function addQRDataE(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsC = ReportLib\TextStyles::addTextStyle("CaptionE", $tsNormal);
@@ -435,7 +423,7 @@ function addQrAngabenE(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrAngabenZ(ReportLib\Report $report): void
+function addQRDataZ(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsC = ReportLib\TextStyles::addTextStyle("CaptionE", $tsNormal);
@@ -467,7 +455,7 @@ function addQrAngabenZ(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrBetragE(ReportLib\Report $report): void
+function addQRValueE(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsC = ReportLib\TextStyles::addTextStyle("CaptionE", $tsNormal);
@@ -489,7 +477,7 @@ function addQrBetragE(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrBetragZ(ReportLib\Report $report): void
+function addQRValueZ(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsC = ReportLib\TextStyles::addTextStyle("CaptionE", $tsNormal);
@@ -512,7 +500,7 @@ function addQrBetragZ(ReportLib\Report $report): void
  * @param ReportLib\Report $report
  * @return void
  */
-function addQrAnnahmestelleE(ReportLib\Report $report): void
+function addQRE(ReportLib\Report $report): void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
     $tsC = ReportLib\TextStyles::addTextStyle("CaptionE", $tsNormal);
@@ -562,9 +550,7 @@ function addQrText(ReportLib\Report $report, string $text, float $x, float $y, f
 {
     $qrTopOffset = 297.0 - 105.0;
     $f = new ReportLib\FixposFrame($x, $qrTopOffset + $y, true);
-
     $tf = $f->AddTextInBox($w, $text, $ts, $hAlign);
-
     $report->getBody()->AddFrame($f);
 
     return $y + convertPtToMM($abstand);
