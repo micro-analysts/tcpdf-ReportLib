@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : FixposFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 09:04
+ * // Last Update   : 28.12.22, 10:46
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -36,6 +36,7 @@ namespace Adi\ReportLib;
  * If the position and size of this frame is free on the current page
  * it will be printed on the current page. If there is already some
  * output on that spot, the frame will be printed on the next page.
+ * That can be overwritten by defining the overlay parameter to true.
  * @brief Frame with a fix position on a page
  * @author Michael Hodel - info@adiuvaris.ch
  */
