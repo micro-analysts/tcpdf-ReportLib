@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : Renderer.php
  * // Version       : 1.0.0
- * // Last Update   : 26.12.22, 07:03
+ * // Last Update   : 28.12.22, 13:22
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -110,6 +110,35 @@ class Renderer
 
         $pageFormat = $this->getPageFormat($page);
 
+        $size = $this->getPaperSize($page);
+
+        if ($pageFormat->isMirrorMargins()) {
+            if ($page % 2 == 0) {
+                $pageBounds = new Rect($pageFormat->getMarginRight(), $pageFormat->getMarginTop(),$size->width - $pageFormat->getMarginLeft(), $size->height - $pageFormat->getMarginBottom());
+            } else {
+                $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
+            }
+        } else {
+            $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
+        }
+        return $pageBounds;
+    }
+
+
+    /**
+     * Returns the paper size in millimeters
+     * If no page number is given it will use the current page
+     * @param int $page Page number
+     * @return Size Paper size
+     */
+    public function getPaperSize(int $page = 0) : Size
+    {
+        if ($page == 0) {
+            $page = $this->getCurrentPage();
+        }
+
+        $pageFormat = $this->getPageFormat($page);
+
         // calculate the page size in millimeters
         $w = 210.0;
         $h = 297.0;
@@ -126,16 +155,7 @@ class Renderer
             $size = new Size(round($h, 2), round($w, 2));
         }
 
-        if ($pageFormat->isMirrorMargins()) {
-            if ($page % 2 == 0) {
-                $pageBounds = new Rect($pageFormat->getMarginRight(), $pageFormat->getMarginTop(),$size->width - $pageFormat->getMarginLeft(), $size->height - $pageFormat->getMarginBottom());
-            } else {
-                $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
-            }
-        } else {
-            $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
-        }
-        return $pageBounds;
+        return $size;
     }
 
     /**

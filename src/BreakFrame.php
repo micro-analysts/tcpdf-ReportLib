@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : BreakFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 18.12.22, 09:13
+ * // Last Update   : 28.12.22, 13:22
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -61,22 +61,22 @@ class BreakFrame extends ReportFrame
      * Page info from the next page on
      * @var PageFormat
      */
-    protected PageFormat $pageFormat;
+    protected ?PageFormat $pageFormat;
 
     /**
      * Class constructor
-     * @param PageFormat $pageFormat Page format information for the next section
+     * @param ?PageFormat $pageFormat Page format information for the next section or null
      */
-    public function __construct(PageFormat $pageFormat = new PageFormat())
+    public function __construct(PageFormat $pageFormat = null)
     {
         parent::__construct();
         $this->pageFormat = $pageFormat;
     }
 
     /**
-     * @return PageFormat
+     * @return ?PageFormat
      */
-    public function getPageFormat(): PageFormat
+    public function getPageFormat(): ?PageFormat
     {
         return $this->pageFormat;
     }
@@ -110,7 +110,9 @@ class BreakFrame extends ReportFrame
             // Set the page format information for the next section
             // and save the page number where the break was initiated
             $this->pageNumber = $page;
-            $r->setPageFormat($page + 1, $this->pageFormat);
+            if (!is_null($this->pageFormat)) {
+                $r->setPageFormat($page + 1, $this->pageFormat);
+            }
 
             $sizeState->continued = true;
             $sizeState->requiredSize = $forRect->getSize();

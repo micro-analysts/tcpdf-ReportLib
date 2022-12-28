@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ContainerFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 22.12.22, 07:36
+ * // Last Update   : 28.12.22, 13:08
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -288,10 +288,10 @@ abstract class ContainerFrame extends ReportFrame
 
     /**
      * Adds a simple page break
-     * @param PageFormat $pageFormat
+     * @param ?PageFormat $pageFormat
      * @return BreakFrame
      */
-    public function AddPageBreak(PageFormat $pageFormat = new PageFormat()): BreakFrame
+    public function AddPageBreak(?PageFormat $pageFormat = null): BreakFrame
     {
         $bf = new BreakFrame($pageFormat);
         $this->addFrame($bf);
