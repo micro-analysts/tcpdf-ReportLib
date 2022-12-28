@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : FixposFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 19.12.22, 06:37
+ * // Last Update   : 28.12.22, 09:04
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -54,16 +54,24 @@ class FixposFrame extends ContainerFrame
     protected float $offsetTop;
 
     /**
+     * Flag if the frame may overlay other frames
+     * @var bool
+     */
+    protected bool $overlay;
+
+    /**
      * Class constructor
      * @param float $offsetLeft Left position
      * @param float $offsetTop Top position
+     * @param bool $overlay Flag if the frame may overlay other frames
      */
-    public function __construct(float $offsetLeft = 0.0, float $offsetTop = 0.0)
+    public function __construct(float $offsetLeft = 0.0, float $offsetTop = 0.0, bool $overlay = false)
     {
         parent::__construct();
 
         $this->offsetLeft = $offsetLeft;
         $this->offsetTop = $offsetTop;
+        $this->overlay = $overlay;
     }
 
     /**
@@ -99,6 +107,23 @@ class FixposFrame extends ContainerFrame
     }
 
     /**
+     * @return bool
+     */
+    public function isOverlay(): bool
+    {
+        return $this->overlay;
+    }
+
+    /**
+     * @param bool $overlay
+     */
+    public function setOverlay(bool $overlay): void
+    {
+        $this->overlay = $overlay;
+    }
+
+
+    /**
      * Calculates the size of the frame for the given rectangle
      * @param Renderer $r Class that can add the content to the report
      * @param Rect $forRect Rect in which the frame has to be printed
@@ -116,8 +141,10 @@ class FixposFrame extends ContainerFrame
         } else {
 
             if ($this->offsetTop < $forRect->top || $this->offsetLeft < $forRect->left) {
-                $sizeState->fits = false;
-                return $sizeState;
+                if (!$this->overlay) {
+                    $sizeState->fits = false;
+                    return $sizeState;
+                }
             }
 
             $rect->left = $this->offsetLeft;
@@ -131,7 +158,11 @@ class FixposFrame extends ContainerFrame
                 $sizeState->requiredSize->height = max($sizeState->requiredSize->height, $frame->getSize()->height);
                 $sizeState->requiredSize->width = max($sizeState->requiredSize->width, $frame->getSize()->width);
                 if ($frame->continued) {
-                    $sizeState->continued = true;
+                    if (!$this->overlay) {
+                        $sizeState->continued = true;
+                    } else {
+                        $sizeState->continued = false;
+                    }
                 }
                 if ($frame->fits) {
                     $sizeState->fits = true;
@@ -170,7 +201,11 @@ class FixposFrame extends ContainerFrame
 
             $frame->print($r, $rect);
             if ($frame->continued) {
-                $this->continued = true;
+                if (!$this->overlay) {
+                    $this->continued = true;
+                } else {
+                    $this->continued = false;
+                }
             }
         }
     }

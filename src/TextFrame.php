@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : TextFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 17.12.22, 15:19
+ * // Last Update   : 28.12.22, 10:21
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -294,7 +294,7 @@ class TextFrame extends ReportFrame
         $fontHeight = $r->getFontHeight($this->textStyle, $this->hAlignment, $this->vAlignment);
         $fits = true;
 
-        if (round($this->textLayout->getHeight(), 2) < $fontHeight || round($this->textLayout->getWidth(), 2 ) < $this->minimumWidth) {
+        if (round($this->textLayout->getHeight(), 3) < round($fontHeight,3) || round($this->textLayout->getWidth(), 3 ) < round($this->minimumWidth,3)) {
             $fits = false;
         }
         return $fits;
