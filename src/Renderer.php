@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : Renderer.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 13:22
+ * // Last Update   : 29.12.22, 15:57
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -35,7 +35,12 @@ include_once "PageFormat.php";
 include_once "TextStyle.php";
 include_once "Renderer.php";
 
-require __DIR__ . "/../vendor/autoload.php";
+if (@file_exists(__DIR__ . "/../vendor/autoload.php")) {
+    require __DIR__ . "/../vendor/autoload.php";
+} else if (@file_exists(__DIR__ . "/../../../autoload.php")) {
+    require __DIR__ . "/../../../autoload.php";
+}
+
 use TCPDF;
 use TCPDF_COLORS;
 use TCPDF_STATIC;
