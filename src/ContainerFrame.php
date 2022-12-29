@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ContainerFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 13:08
+ * // Last Update   : 29.12.22, 07:21
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -454,7 +454,7 @@ abstract class ContainerFrame extends ReportFrame
      */
     public function addFrame(ReportFrame $frame): int
     {
-        $frame->setParent($this);
+        $frame->setParentFrame($this);
         $this->frames[] = $frame;
         return count($this->frames);
     }

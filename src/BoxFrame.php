@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : BoxFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 22.12.22, 08:03
+ * // Last Update   : 29.12.22, 07:21
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -384,10 +384,10 @@ class BoxFrame extends ContainerFrame
         $rect->top += $this->border->getTopWidth() + $this->paddingTop;
         if ($this->width > 0) {
             if ($this->widthInPercent) {
-                if (is_null($this->parent)) {
+                if (is_null($this->parentFrame)) {
                     $frameWidth = $rect->getWidth();
                 } else {
-                    $frameWidth = $this->parent->getSizingBounds()->getWidth();
+                    $frameWidth = $this->parentFrame->getSizingBounds()->getWidth();
                 }
 
                 $contentWidth = ($frameWidth * $this->width / 100.0)
@@ -409,10 +409,10 @@ class BoxFrame extends ContainerFrame
 
         if ($this->height > 0) {
             if ($this->widthInPercent) {
-                if (is_null($this->parent)) {
+                if (is_null($this->parentFrame)) {
                     $frameHeight = $rect->getHeight();
                 } else {
-                    $frameHeight = $this->parent->getSizingBounds()->getHeight();
+                    $frameHeight = $this->parentFrame->getSizingBounds()->getHeight();
                 }
 
                 $contentHeight = ($frameHeight* $this->height / 100.0)
@@ -485,10 +485,10 @@ class BoxFrame extends ContainerFrame
             if ($this->widthToUse == 0.0) {
                 $this->widthToUse = $this->width;
                 if ($this->widthInPercent) {
-                    if (is_null($this->parent)) {
+                    if (is_null($this->parentFrame)) {
                         $frameWidth = $rect->getWidth();
                     } else {
-                        $frameWidth = $this->parent->getSizingBounds()->getWidth();
+                        $frameWidth = $this->parentFrame->getSizingBounds()->getWidth();
                     }
 
                     $this->widthToUse = $frameWidth * ($this->width / 100.0);
@@ -503,10 +503,10 @@ class BoxFrame extends ContainerFrame
             if ($this->heightToUse == 0.0) {
                 $this->heightToUse = $this->height;
                 if ($this->heightInPercent) {
-                    if (is_null($this->parent)) {
+                    if (is_null($this->parentFrame)) {
                         $frameHeight = $rect->getHeight();
                     } else {
-                        $frameHeight = $this->parent->getSizingBounds()->getHeight();
+                        $frameHeight = $this->parentFrame->getSizingBounds()->getHeight();
                     }
                     $this->heightToUse = $frameHeight * ($this->height / 100.0);
                 }

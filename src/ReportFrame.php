@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ReportFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 23.12.22, 10:01
+ * // Last Update   : 29.12.22, 07:21
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -50,7 +50,7 @@ abstract class ReportFrame
      * Parent frame or null
      * @var ?ReportFrame
      */
-    protected ?ReportFrame $parent;
+    protected ?ReportFrame $parentFrame;
 
     /**
      * Horizontal alignment
@@ -184,23 +184,15 @@ abstract class ReportFrame
         $this->sized = false;
         $this->startedPrinting = false;
 
-        $this->parent = null;
+        $this->parentFrame = null;
     }
 
     /**
-     * @return ReportFrame|null
+     * @param ReportFrame|null $parentFrame
      */
-    public function getParent(): ?ReportFrame
+    public function setParentFrame(?ReportFrame $parentFrame): void
     {
-        return $this->parent;
-    }
-
-    /**
-     * @param ReportFrame|null $parent
-     */
-    public function setParent(?ReportFrame $parent): void
-    {
-        $this->parent = $parent;
+        $this->parentFrame = $parentFrame;
     }
 
     /**
