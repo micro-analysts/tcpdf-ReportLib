@@ -14,7 +14,7 @@
 
 PHP library for generating dynamic PDF reports using the TCPDF library to create the PDF documents. 
 The library works with nested rectangle regions on the paper where the sizes can be defined in millimeters 
-or in percent of the surrounding rectangle.
+or in percent of the surrounding rectangle or the library calculates them by the content.
 
 ### Main Features:
 * all standard page formats (from TCPDF), custom page margins;
@@ -33,7 +33,7 @@ or in percent of the surrounding rectangle.
 Via Composer
 
 ``` bash
-$ composer require Adiuvaris/ReportLib
+$ composer require adiuvaris/ReportLib
 ```
 
 ## Usage
