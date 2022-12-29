@@ -40,7 +40,7 @@ $ composer require adiuvaris/ReportLib
 
 ``` php
 <?php
-include_once "src/Report.php";
+require __DIR__ . "/vendor/autoload.php";
 use Adi\ReportLib as ReportLib;
 $rp = new ReportLib\Report();
 $rp->getBody()->AddText("ReportLib test.",ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL));
