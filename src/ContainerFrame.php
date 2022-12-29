@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ContainerFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 29.12.22, 07:21
+ * // Last Update   : 29.12.22, 07:30
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -65,6 +65,65 @@ abstract class ContainerFrame extends ReportFrame
         $this->currentFrameIndex = 0;
         $this->frames = array();
     }
+
+    /**
+     * Adds a frame to the container
+     * @param ReportFrame $frame
+     * @return int
+     */
+    public function addFrame(ReportFrame $frame): int
+    {
+        $frame->setParentFrame($this);
+        $this->frames[] = $frame;
+        return count($this->frames);
+    }
+
+    /**
+     * Removes a frame from the container by its index
+     * @param int $index
+     * @return void
+     */
+    public function removeFrame(int $index): void
+    {
+        if ($index >= $this->getFrameCount()) {
+            return;
+        }
+        unset($this->frames[$index]);
+        $this->frames = array_values($this->frames);
+    }
+
+    /**
+     * Returns a frame in the container by its index
+     * @param int $index
+     * @return ReportFrame|null
+     */
+    public function getFrame(int $index): ?ReportFrame
+    {
+        if ($index >= $this->getFrameCount()) {
+            return null;
+        }
+        return $this->frames[$index];
+    }
+
+    /**
+     * Returns the number of frames in the container
+     * @return int
+     */
+    public function getFrameCount(): int
+    {
+        return count($this->frames);
+    }
+
+    /**
+     * Clears all frames from the container
+     * @return void
+     */
+    public function clearFrames(): void
+    {
+        unset($this->frames);
+        $this->frames = array();
+    }
+
 
     /**
      * Adds a vertical container
@@ -445,64 +504,6 @@ abstract class ContainerFrame extends ReportFrame
         for ($i = 0; $i < count($this->frames); $i++) {
             $this->frames[$i]->reset();
         }
-    }
-
-    /**
-     * Adds a frame to the container
-     * @param ReportFrame $frame
-     * @return int
-     */
-    public function addFrame(ReportFrame $frame): int
-    {
-        $frame->setParentFrame($this);
-        $this->frames[] = $frame;
-        return count($this->frames);
-    }
-
-    /**
-     * Removes a frame from the container by its index
-     * @param int $index
-     * @return void
-     */
-    public function removeFrame(int $index): void
-    {
-        if ($index >= $this->getFrameCount()) {
-            return;
-        }
-        unset($this->frames[$index]);
-        $this->frames = array_values($this->frames);
-    }
-
-    /**
-     * Returns a frame in the container by its index
-     * @param int $index
-     * @return ReportFrame|null
-     */
-    public function getFrame(int $index): ?ReportFrame
-    {
-        if ($index >= $this->getFrameCount()) {
-            return null;
-        }
-        return $this->frames[$index];
-    }
-
-    /**
-     * Returns the number of frames in the container
-     * @return int
-     */
-    public function getFrameCount(): int
-    {
-        return count($this->frames);
-    }
-
-    /**
-     * Clears all frames from the container
-     * @return void
-     */
-    public function clearFrames(): void
-    {
-        unset($this->frames);
-        $this->frames = array();
     }
 
     /**

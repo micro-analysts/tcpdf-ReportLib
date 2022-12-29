@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : BreakFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 13:22
+ * // Last Update   : 29.12.22, 07:42
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -58,14 +58,14 @@ class BreakFrame extends ReportFrame
     protected bool $firstTimeCalled;
 
     /**
-     * Page info from the next page on
+     * Page info from the next page on or null if to use the current format
      * @var PageFormat
      */
     protected ?PageFormat $pageFormat;
 
     /**
      * Class constructor
-     * @param ?PageFormat $pageFormat Page format information for the next section or null
+     * @param ?PageFormat $pageFormat Page format information for the next section or null if the format should not be changed
      */
     public function __construct(PageFormat $pageFormat = null)
     {
@@ -82,9 +82,9 @@ class BreakFrame extends ReportFrame
     }
 
     /**
-     * @param PageFormat $pageFormat
+     * @param ?PageFormat $pageFormat
      */
-    public function setPageFormat(PageFormat $pageFormat): void
+    public function setPageFormat(?PageFormat $pageFormat): void
     {
         $this->pageFormat = $pageFormat;
     }
