@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : example_028.php
  * // Version       : 1.0.0
- * // Last Update   : 28.12.22, 12:49
+ * // Last Update   : 30.12.22, 06:35
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -102,6 +102,16 @@ try {
     $body->clearFrames();
 }
 
+// Exception because of Image does not exist
+$f = new ReportLib\ImageFrame("");
+$report->getBody()->AddFrame($f);
+try {
+    $report->output(__DIR__ . "/example_028.pdf");
+} catch (Exception $e) {
+    $errorText .= $e;
+    $errorText .=  "<br><br><br>";
+    $body->clearFrames();
+}
 
 echo $errorText;
 

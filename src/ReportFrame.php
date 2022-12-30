@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ReportFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 29.12.22, 07:21
+ * // Last Update   : 30.12.22, 06:31
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -29,6 +29,8 @@
  */
 
 namespace Adi\ReportLib;
+
+use Exception;
 
 include_once "Size.php";
 include_once "Rect.php";
@@ -474,7 +476,7 @@ abstract class ReportFrame
      * @param Renderer $r
      * @param Rect $rect
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function calcSize(Renderer $r, Rect $rect) : void
     {
@@ -490,7 +492,7 @@ abstract class ReportFrame
                 if ($r->getPageBounds() == $rect) {
 
                     // There is no way to print this report.
-                    throw new \Exception("Too big keepTogether frame!");
+                    throw new Exception("Too big keepTogether frame!");
                 }
             } else {
                 $this->fits = $values->fits;
@@ -500,7 +502,7 @@ abstract class ReportFrame
                     if ($rect->isEmpty() || $rect->getWidth() == 0.0) {
 
                         // There is no way to print this report.
-                        throw new \Exception("No space left in frame for another frame!");
+                        throw new Exception("No space left in frame for another frame!");
                     }
                 }
             }
@@ -514,6 +516,7 @@ abstract class ReportFrame
      * @param Renderer $r
      * @param Rect $rect
      * @return void
+     * @throws Exception
      */
     public function print(Renderer $r, Rect $rect) : void
     {

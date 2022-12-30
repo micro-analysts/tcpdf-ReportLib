@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : Report.php
  * // Version       : 1.0.0
- * // Last Update   : 20.12.22, 11:45
+ * // Last Update   : 30.12.22, 06:31
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -199,6 +199,7 @@ class Report
      * @param string $repFileName
      * @param string $action
      * @return int
+     * @throws Exception
      */
     protected function printReport(Renderer $r, string $repFileName, string $action): int
     {
@@ -238,6 +239,7 @@ class Report
     /**
      * @param Renderer $r
      * @return bool
+     * @throws Exception
      */
     protected function printAPage(Renderer $r): bool
     {
@@ -285,6 +287,7 @@ class Report
     /**
      * @param Renderer $r
      * @return int
+     * @throws Exception
      */
     protected function countPages(Renderer $r): int
     {
@@ -311,6 +314,7 @@ class Report
     /**
      * @param Renderer $r
      * @return bool
+     * @throws Exception
      */
     protected function onPrintPage(Renderer $r): bool
     {

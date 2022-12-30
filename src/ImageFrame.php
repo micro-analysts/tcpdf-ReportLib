@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ImageFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 14.12.22, 13:56
+ * // Last Update   : 30.12.22, 06:26
  * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -29,6 +29,8 @@
  */
 
 namespace Adi\ReportLib;
+
+use Exception;
 
 include_once "ReportFrame.php";
 
@@ -87,16 +89,6 @@ class ImageFrame extends ReportFrame
         $this->preserveAspectRatio = $preserveAspectRatio;
         $this->maxWidth = $maxWidth;
         $this->maxHeight = $maxHeight;
-
-        // Determine the real size of the image
-        if (file_exists($fileName)) {
-            $size = getimagesize($fileName);
-            $this->width = $size[0];
-            $this->height = $size[1];
-        } else {
-            $this->width = $maxWidth;
-            $this->height = $maxHeight;
-        }
     }
 
     /**
@@ -206,9 +198,22 @@ class ImageFrame extends ReportFrame
      * For image frames there is nothing to do here.
      * @param Renderer $r
      * @return void
+     * @throws Exception
      */
     protected function doBeginPrint(Renderer $r) : void
     {
+        // Determine the real size of the image
+        if (file_exists($this->fileName)) {
+            $size = getimagesize($this->fileName);
+            if ($size) {
+                $this->width = $size[0];
+                $this->height = $size[1];
+            } else {
+                throw new Exception("Image file seems not to be a valid image");
+            }
+        } else {
+            throw new Exception("Image file does not exist.");
+        }
     }
 
 }
