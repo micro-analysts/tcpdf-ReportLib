@@ -6,7 +6,7 @@
 * **author**      Michael Hodel <info@adiuvaris.ch>
 * **copyright**   2022-2023 Michael Hodel - Adiuvaris
 * **license**     http://www.gnu.org/copyleft/lesser.html GNU-LGPL v3 (see LICENSE.TXT)
-* **link**        https://reportlib.adiuvaris.ch
+* **link**        https://www.adiuvaris.ch/reportlib
 * **source**      https://github.com/adiuvaris/ReportLib
 
 

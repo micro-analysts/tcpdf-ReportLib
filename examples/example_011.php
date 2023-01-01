@@ -3,11 +3,11 @@
  * //============================================================+
  * // File name     : example_011.php
  * // Version       : 1.0.0
- * // Last Update   : 20.12.22, 08:56
- * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
+ * // Last Update   : 01.01.23, 10:52
+ * // Author        : Michael Hodel - adiuvaris.ch/reportlib - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
- * // Copyright (C) 2022 - 2022 Michael Hodel
+ * // Copyright (C) 2022 - 2023 Michael Hodel
  * //
  * // This file is part of ReportLib software library.
  * //
@@ -40,23 +40,23 @@ $report = new ReportLib\Report();
 $body = $report->getBody();
 
 // QR code in a square
-$body->AddBarcode("reportlib.adiuvaris.ch", "QRCODE", 50.0, 50.0);
+$body->AddBarcode("adiuvaris.ch/reportlib", "QRCODE", 50.0, 50.0);
 $body->AddVDistance(5.0);
 
 // QR code in a rectangle height>width
-$body->AddBarcode("reportlib.adiuvaris.ch", "QRCODE", 50.0, 80.0);
+$body->AddBarcode("adiuvaris.ch/reportlib", "QRCODE", 50.0, 80.0);
 $body->AddVDistance(5.0);
 
 // QR code in a rectangle height>width
-$body->AddBarcode("reportlib.adiuvaris.ch", "QRCODE,H", 100.0, 40.0);
+$body->AddBarcode("adiuvaris.ch/reportlib", "QRCODE,H", 100.0, 40.0);
 $body->AddVDistance(5.0);
 
 // PDF417 code in a square
-$body->AddBarcode("reportlib.adiuvaris.ch", "PDF417", 50.0, 50.0);
+$body->AddBarcode("adiuvaris.ch/reportlib", "PDF417", 50.0, 50.0);
 $body->AddVDistance(5.0);
 
 // Datamatrix code in a square
-$body->AddBarcode("reportlib.adiuvaris.ch", "DATAMATRIX", 50.0, 50.0);
+$body->AddBarcode("adiuvaris.ch/reportlib", "DATAMATRIX", 50.0, 50.0);
 $body->AddVDistance(5.0);
 
 // Produce the output of the report

@@ -3,16 +3,17 @@
     "description" : "A library to create dynamic pdf reports",
     "keywords": [
         "adiuvaris",
-        "adi",
-        "reportlib"
+        "pdf",
+        "reportlib",
+        "tcpdf"
     ],
-    "homepage" : "https://reportlib.adiuvaris.ch",
+    "homepage" : "https://www.adiuvaris.ch/reportlib",
     "license" : "LGPL-3.0-only",
     "authors" : [
         {
             "name": "Michael Hodel",
             "email": "info@adiuvaris.ch",
-            "homepage": "https://reportlib.adiuvaris.ch",
+            "homepage": "https://www.adiuvaris.ch",
             "role": "Developer"
         }
     ],

@@ -3,11 +3,11 @@
  * //============================================================+
  * // File name     : example_022.php
  * // Version       : 1.0.0
- * // Last Update   : 21.12.22, 14:45
- * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
+ * // Last Update   : 01.01.23, 10:52
+ * // Author        : Michael Hodel - adiuvaris.ch/reportlib - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
- * // Copyright (C) 2022 - 2022 Michael Hodel
+ * // Copyright (C) 2022 - 2023 Michael Hodel
  * //
  * // This file is part of ReportLib software library.
  * //
@@ -77,7 +77,7 @@ $body->AddVDistance(10.0);
 $sf = $body->AddHContainer();
 
 // First column with a QR-code
-$sf->AddBarcode("reportlib.adiuvaris.ch", "QRCODE",40.0, 40.0);
+$sf->AddBarcode("adiuvaris.ch/reportlib", "QRCODE",40.0, 40.0);
 $sf->AddHDistance(5.0);
 
 // Second column with an image

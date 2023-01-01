@@ -3,11 +3,11 @@
  * //============================================================+
  * // File name     : example_008.php
  * // Version       : 1.0.0
- * // Last Update   : 20.12.22, 14:18
- * // Author        : Michael Hodel - reportlib.adiuvaris.ch - info@adiuvaris.ch
+ * // Last Update   : 01.01.23, 10:52
+ * // Author        : Michael Hodel - adiuvaris.ch/reportlib - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
- * // Copyright (C) 2022 - 2022 Michael Hodel
+ * // Copyright (C) 2022 - 2023 Michael Hodel
  * //
  * // This file is part of ReportLib software library.
  * //
