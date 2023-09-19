@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ReportFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 01.01.23, 10:52
+ * // Last Update   : 19.09.23, 09:43
  * // Author        : Michael Hodel - adiuvaris.ch/reportlib - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -121,6 +121,12 @@ abstract class ReportFrame
     protected bool $keepTogether;
 
     /**
+     * Counter to cancel multiple tries to move frame to next page
+     * @var int
+     */
+    protected int $keepTogetherCounter;
+
+    /**
      * Required calculated size
      * @var Size
      */
@@ -178,6 +184,7 @@ abstract class ReportFrame
         $this->useFullHeight = false;
         $this->useFullWidth = false;
         $this->keepTogether = false;
+        $this->keepTogetherCounter = 0;
         $this->maxWidth = 0.0;
         $this->maxHeight = 0.0;
 
@@ -456,6 +463,7 @@ abstract class ReportFrame
         $this->sized = false;
         $this->fits = false;
         $this->continued = false;
+        $this->keepTogetherCounter = 0;
     }
 
     /**
@@ -486,14 +494,11 @@ abstract class ReportFrame
             $values = $this->doCalcSize($r, $this->sizingBounds);
             $this->setSize($values->requiredSize, $rect);
             if ($this->keepTogether && $values->continued) {
-                $this->fits = false;
-
-                // If the rect is equal to the pageBounds then the frame is too big to be kept together
-                if ($r->getPageBounds() == $rect) {
-
-                    // There is no way to print this report.
-                    throw new Exception("Too big keepTogether frame!");
+                $this->keepTogetherCounter++;
+                if ($this->keepTogetherCounter > 0) {
+                    $this->keepTogether = false;
                 }
+                $this->fits = false;
             } else {
                 $this->fits = $values->fits;
 
