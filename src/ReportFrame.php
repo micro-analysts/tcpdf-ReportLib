@@ -3,7 +3,7 @@
  * //============================================================+
  * // File name     : ReportFrame.php
  * // Version       : 1.0.0
- * // Last Update   : 19.09.23, 09:43
+ * // Last Update   : 19.09.23, 10:05
  * // Author        : Michael Hodel - adiuvaris.ch/reportlib - info@adiuvaris.ch
  * // License       : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
  * //
@@ -495,7 +495,7 @@ abstract class ReportFrame
             $this->setSize($values->requiredSize, $rect);
             if ($this->keepTogether && $values->continued) {
                 $this->keepTogetherCounter++;
-                if ($this->keepTogetherCounter > 0) {
+                if ($this->keepTogetherCounter > 1) {
                     $this->keepTogether = false;
                 }
                 $this->fits = false;
