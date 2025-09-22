@@ -39,7 +39,7 @@ include_once "ReportFrame.php";
  * A barcode (e.g. "QRCODE") will be printed in a rectangle with a given width and height.
  * @brief Class representing a barcode in a report
  * @author Michael Hodel - info@adiuvaris.ch
-*/
+ */
 class BarcodeFrame extends ReportFrame
 {
     /**
@@ -160,7 +160,7 @@ class BarcodeFrame extends ReportFrame
      * @param Rect $rect The max dimensions for the barcode
      * @return Rect Rectangle with real coordinates in the report
      */
-    protected function getBarcodeRect(Rect $rect) : Rect
+    protected function getBarcodeRect(Rect $rect): Rect
     {
         $maxSize = $rect->getSize();
         $scaleW = $maxSize->width / $this->width;
@@ -181,7 +181,7 @@ class BarcodeFrame extends ReportFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $this->barcodeRect = $this->getBarcodeRect($newRect);
 
@@ -227,9 +227,5 @@ class BarcodeFrame extends ReportFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
-    {
-    }
-
+    protected function doBeginPrint(Renderer $r): void {}
 }
-

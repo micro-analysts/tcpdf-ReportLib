@@ -34,7 +34,7 @@ namespace Adi\ReportLib;
  * @class Rect
  * Class representing a rectangle by its coordinates of the top left
  * and bottom right corners.
-  * @brief PHP class representing a rectangle
+ * @brief PHP class representing a rectangle
  * @author Michael Hodel - info@adiuvaris.ch
  */
 class Rect
@@ -95,7 +95,7 @@ class Rect
      * Return the width of the rectangle
      * @return float
      */
-    public function getWidth() : float
+    public function getWidth(): float
     {
         return $this->right - $this->left;
     }
@@ -104,7 +104,7 @@ class Rect
      * Return the height of the rectangle
      * @return float
      */
-    public function getHeight() : float
+    public function getHeight(): float
     {
         return $this->bottom - $this->top;
     }
@@ -113,7 +113,7 @@ class Rect
      * Return the size of the rectangle
      * @return Size
      */
-    public function getSize() : Size
+    public function getSize(): Size
     {
         return new Size($this->getWidth(), $this->getHeight());
     }
@@ -122,7 +122,7 @@ class Rect
      * Checks if the size is 0 in both directions
      * @return bool
      */
-    public function isEmpty() : bool
+    public function isEmpty(): bool
     {
         return (($this->getWidth() <= Rect::C_EPS) && ($this->getHeight() <= Rect::C_EPS));
     }
@@ -135,9 +135,9 @@ class Rect
      * @param float $marginLeft
      * @return Rect
      */
-    public function getRectWithMargins(float $marginTop, float $marginRight, float $marginBottom, float $marginLeft) : Rect
+    public function getRectWithMargins(float $marginTop, float $marginRight, float $marginBottom, float $marginLeft): Rect
     {
-        $r = new Rect(rect:$this);
+        $r = new Rect(rect: $this);
         $r->left += $marginLeft;
         $r->top += $marginTop;
         $r->right -= $marginRight;
@@ -153,7 +153,7 @@ class Rect
      * @param string $vAlignment
      * @return Rect
      */
-    public function getRectWithSizeAndAlign(Size $size = null, string $hAlignment = 'L', string $vAlignment = 'T') : Rect
+    public function getRectWithSizeAndAlign(Size $size = null, string $hAlignment = 'L', string $vAlignment = 'T'): Rect
     {
         if (!is_null($size)) {
             $width = $size->width;
@@ -187,7 +187,7 @@ class Rect
             $rect = new Rect($upperLeftX, $upperLeftY, $upperLeftX + $width, $upperLeftY + $height);
         } else {
             $size = $this->getSize();
-            $rect = new Rect($this->left, $this->top, $this->left + $size->width, $this->top + $size->height );
+            $rect = new Rect($this->left, $this->top, $this->left + $size->width, $this->top + $size->height);
         }
         return $this->check($rect);
     }
@@ -197,9 +197,9 @@ class Rect
      * @param Rect $checkRect
      * @return Rect
      */
-    public function check(Rect $checkRect) : Rect
+    public function check(Rect $checkRect): Rect
     {
-        $rect = new Rect(rect:$checkRect);
+        $rect = new Rect(rect: $checkRect);
 
         if ($rect->right > $this->right) {
             $rect->right -= ($rect->right - $this->right);
@@ -216,7 +216,7 @@ class Rect
      * @param Size $size
      * @return bool
      */
-    public function sizeFits(Size $size) : bool
+    public function sizeFits(Size $size): bool
     {
         $h = $size->height - $this->getHeight();
         $w = $size->width - $this->getWidth();
@@ -228,7 +228,7 @@ class Rect
      * @param float $width
      * @return bool
      */
-    public function widthFits(float $width) : bool
+    public function widthFits(float $width): bool
     {
         $w = $width - $this->getWidth();
         return !($w > Rect::C_EPS);
@@ -239,7 +239,7 @@ class Rect
      * @param float $height
      * @return bool
      */
-    public function heightFits(float $height) : bool
+    public function heightFits(float $height): bool
     {
         $h = $height - $this->getHeight();
         return !($h > Rect::C_EPS);
@@ -250,10 +250,10 @@ class Rect
      * @param Rect $rect
      * @return bool
      */
-    public function isEqualTo (Rect $rect) : bool
+    public function isEqualTo(Rect $rect): bool
     {
         return ($this->coordsEqual($this->left, $rect->left) && $this->coordsEqual($this->top, $rect->top) &&
-                $this->coordsEqual($this->right, $rect->right) && $this->coordsEqual($this->bottom, $rect->bottom));
+            $this->coordsEqual($this->right, $rect->right) && $this->coordsEqual($this->bottom, $rect->bottom));
     }
 
     /**
@@ -262,7 +262,7 @@ class Rect
      * @param float $b
      * @return bool
      */
-    protected function coordsEqual(float $a, float $b) : bool
+    protected function coordsEqual(float $a, float $b): bool
     {
         if ($a > $b) {
             return (($a - $b) < Rect::C_EPS);
@@ -270,6 +270,4 @@ class Rect
             return (($b - $a) < Rect::C_EPS);
         }
     }
-
 }
-

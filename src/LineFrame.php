@@ -187,7 +187,7 @@ class LineFrame extends ReportFrame
      * @param Rect $forRect
      * @return void
      */
-    protected function setLinePoints(Rect $forRect) : void
+    protected function setLinePoints(Rect $forRect): void
     {
         $penWidth = $this->pen->getExtent();
         $halfWidth = $penWidth / 2.0;
@@ -275,7 +275,7 @@ class LineFrame extends ReportFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $this->setLinePoints($newRect);
         return parent::rectChanged($originalRect, $newRect);
@@ -292,7 +292,7 @@ class LineFrame extends ReportFrame
         $width = $this->pen->getExtent();
         $color = $this->pen->getColor();
         $dash = $this->pen->getDash();
-        $r->addLine($this->x1, $this->y1, $this->x2, $this->y2, $width, $dash , $color);
+        $r->addLine($this->x1, $this->y1, $this->x2, $this->y2, $width, $dash, $color);
     }
 
 
@@ -302,7 +302,7 @@ class LineFrame extends ReportFrame
      * in the other.
      * @return Size
      */
-    public function getSize() : Size
+    public function getSize(): Size
     {
         $height = $this->y2 - $this->y1;
         $width = $this->x2 - $this->x1;
@@ -328,9 +328,5 @@ class LineFrame extends ReportFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
-    {
-    }
-
-
+    protected function doBeginPrint(Renderer $r): void {}
 }

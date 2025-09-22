@@ -80,7 +80,7 @@ class TextStyles
      * @param TextStyle $baseStyle Base text style
      * @return TextStyle The newly added text style (or the one already in the list)
      */
-    public static function addTextStyle(string $name, TextStyle $baseStyle) : TextStyle
+    public static function addTextStyle(string $name, TextStyle $baseStyle): TextStyle
     {
         if (!array_key_exists($name, self::$styles)) {
             $ts = new TextStyle($name, $baseStyle);
@@ -112,12 +112,12 @@ class TextStyles
      * @param string $name
      * @return TextStyle
      */
-    public static function getTextStyle(string $name) : TextStyle
+    public static function getTextStyle(string $name): TextStyle
     {
         if (!isset(self::$styles)) {
             self::resetStyles();
         }
-        
+
         if (!array_key_exists($name, self::$styles)) {
             $ts = self::addTextStyle($name, self::$styles[TextStyles::NORMAL]);
         } else {
@@ -130,7 +130,7 @@ class TextStyles
      * Resets the default text styles to their initial settings
      * @return void
      */
-    public static function resetStyles() : void
+    public static function resetStyles(): void
     {
         self::$styles = array();
 
@@ -231,5 +231,4 @@ class TextStyles
         self::$styles[TextStyles::HEADER]->resetToDefault();
         self::$styles[TextStyles::HEADER]->setSizeDelta(DEF_TEXT_FONT_SIZE_DELTA_TABLE);
     }
-
 }

@@ -83,7 +83,7 @@ class SerialFrame extends ContainerFrame
      * @param Size $requiredSize
      * @return void
      */
-    protected function advancePointers(Size $size, Rect $rect, Size $requiredSize) : void
+    protected function advancePointers(Size $size, Rect $rect, Size $requiredSize): void
     {
         switch ($this->direction) {
             case 'V':
@@ -109,9 +109,9 @@ class SerialFrame extends ContainerFrame
      * @param bool $advanceSectionIndex
      * @return SizeState
      */
-    protected function sizePrintFrames(Renderer $r, Rect $inRect, bool $sizeOnly, bool $advanceSectionIndex) : SizeState
+    protected function sizePrintFrames(Renderer $r, Rect $inRect, bool $sizeOnly, bool $advanceSectionIndex): SizeState
     {
-        $rect = new Rect (rect:$inRect);
+        $rect = new Rect(rect: $inRect);
         $sizeStates = new SizeState();
         $sizeStates->fits = false;
 
@@ -203,7 +203,7 @@ class SerialFrame extends ContainerFrame
      */
     protected function doPrint(Renderer $r, Rect $inRect): void
     {
-        $rect = new Rect(rect:$inRect);
+        $rect = new Rect(rect: $inRect);
         if (!$this->useFullWidth) {
             $rect->right = $rect->left + $this->requiredSize->width;
         }
@@ -219,10 +219,9 @@ class SerialFrame extends ContainerFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
+    protected function doBeginPrint(Renderer $r): void
     {
         parent::doBeginPrint($r);
         $this->currentFrameIndex = 0;
     }
-
 }

@@ -406,7 +406,7 @@ abstract class ReportFrame
      * @param float $val
      * @return void
      */
-    public function setMargin(float $val) : void
+    public function setMargin(float $val): void
     {
         $this->marginTop = $val;
         $this->marginRight = $val;
@@ -419,7 +419,7 @@ abstract class ReportFrame
      * @param array $list
      * @return bool
      */
-    public function isEndless(array $list) : bool
+    public function isEndless(array $list): bool
     {
         return false;
     }
@@ -428,7 +428,7 @@ abstract class ReportFrame
      * Returns the size of the frame
      * @return Size
      */
-    public function getSize() : Size
+    public function getSize(): Size
     {
         if (isset($this->size)) {
             return $this->size;
@@ -441,7 +441,7 @@ abstract class ReportFrame
      * @param bool $keepTogether
      * @return void
      */
-    public function resetSize(bool $keepTogether) : void
+    public function resetSize(bool $keepTogether): void
     {
         $this->sized = false;
     }
@@ -450,7 +450,7 @@ abstract class ReportFrame
      * Resets the frame
      * @return void
      */
-    public function reset() : void
+    public function reset(): void
     {
         $this->startedPrinting = false;
         $this->sized = false;
@@ -463,7 +463,7 @@ abstract class ReportFrame
      * @param Renderer $r
      * @return void
      */
-    public function beginPrint(Renderer $r) : void
+    public function beginPrint(Renderer $r): void
     {
         if (!$this->startedPrinting) {
             $this->doBeginPrint($r);
@@ -478,7 +478,7 @@ abstract class ReportFrame
      * @return void
      * @throws Exception
      */
-    public function calcSize(Renderer $r, Rect $rect) : void
+    public function calcSize(Renderer $r, Rect $rect): void
     {
         $this->beginPrint($r);
         if (!$this->sized) {
@@ -518,10 +518,10 @@ abstract class ReportFrame
      * @return void
      * @throws Exception
      */
-    public function print(Renderer $r, Rect $rect) : void
+    public function print(Renderer $r, Rect $rect): void
     {
         $printingBounds = $this->limitBounds($rect);
-        if ($this->sized && (!$printingBounds->isEqualTo( $this->sizingBounds))) {
+        if ($this->sized && (!$printingBounds->isEqualTo($this->sizingBounds))) {
             $values = $this->rectChanged($this->sizingBounds, $printingBounds);
             $this->setSize($values->requiredSize, $rect);
             $this->fits = $values->fits;
@@ -540,9 +540,9 @@ abstract class ReportFrame
      * @param Rect $toRect
      * @return Rect
      */
-    protected function limitBounds(Rect $toRect) : Rect
+    protected function limitBounds(Rect $toRect): Rect
     {
-        $rect = new Rect(rect:$toRect);
+        $rect = new Rect(rect: $toRect);
         if (($this->maxWidth > 0.0) && ($rect->getWidth() > $this->maxWidth)) {
             $rect = $rect->getRectWithSizeAndAlign(new Size($this->maxWidth, $rect->getHeight()), $this->hAlignment, $this->vAlignment);
         }
@@ -582,7 +582,7 @@ abstract class ReportFrame
      * @param Rect $rect
      * @return void
      */
-    public function setSize(Size $requiredSize, Rect $rect) : void
+    public function setSize(Size $requiredSize, Rect $rect): void
     {
         $this->requiredSize = new Size(size: $requiredSize);
         $this->size = new Size();
@@ -615,12 +615,12 @@ abstract class ReportFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $sizeState = new SizeState();
         $sizeState->fits = $this->fits;
         $sizeState->continued = $this->continued;
-        $sizeState->requiredSize = new Size(size:$this->requiredSize);
+        $sizeState->requiredSize = new Size(size: $this->requiredSize);
         return $sizeState;
     }
 
@@ -630,7 +630,7 @@ abstract class ReportFrame
      * @param Rect $forRect Rect in which this frame has to be printed
      * @return SizeState
      */
-    protected abstract function doCalcSize(Renderer $r, Rect $forRect) : SizeState;
+    protected abstract function doCalcSize(Renderer $r, Rect $forRect): SizeState;
 
     /**
      * Prints the contents of the frame into the calculated rectangle
@@ -638,13 +638,12 @@ abstract class ReportFrame
      * @param Rect $inRect Rect into which the contents of this frame will be printed
      * @return void
      */
-    protected abstract function doPrint(Renderer $r, Rect $inRect) : void;
+    protected abstract function doPrint(Renderer $r, Rect $inRect): void;
 
     /**
      * Will be called when the printing begins
      * @param Renderer $r
      * @return void
      */
-    protected abstract function doBeginPrint(Renderer $r) : void;
-
+    protected abstract function doBeginPrint(Renderer $r): void;
 }

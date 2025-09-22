@@ -241,7 +241,7 @@ class TextFrame extends ReportFrame
      * @param int $corner
      * @return array
      */
-    protected function getPoint(Rect $rect, int $corner) : array
+    protected function getPoint(Rect $rect, int $corner): array
     {
         if (($corner & 1) == 0) {
             $x = $rect->left;
@@ -266,7 +266,7 @@ class TextFrame extends ReportFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $resize = true;
         $corner = $this->getOrigin();
@@ -289,12 +289,12 @@ class TextFrame extends ReportFrame
      * @param Renderer $r
      * @return bool
      */
-    protected function checkTextLayout(Renderer $r) : bool
+    protected function checkTextLayout(Renderer $r): bool
     {
         $fontHeight = $r->getFontHeight($this->textStyle, $this->hAlignment, $this->vAlignment);
         $fits = true;
 
-        if (round($this->textLayout->getHeight(), 3) < round($fontHeight,3) || round($this->textLayout->getWidth(), 3 ) < round($this->minimumWidth,3)) {
+        if (round($this->textLayout->getHeight(), 3) < round($fontHeight, 3) || round($this->textLayout->getWidth(), 3) < round($this->minimumWidth, 3)) {
             $fits = false;
         }
         return $fits;
@@ -307,7 +307,7 @@ class TextFrame extends ReportFrame
      * @param Rect $rect
      * @return SizeState
      */
-    protected function setTextSize(Renderer $r, Rect $rect) : SizeState
+    protected function setTextSize(Renderer $r, Rect $rect): SizeState
     {
         $sizeState = new SizeState();
         $sizeState->fits = true;
@@ -457,5 +457,4 @@ class TextFrame extends ReportFrame
     {
         $this->charIndex = 0;
     }
-
 }

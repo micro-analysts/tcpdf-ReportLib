@@ -370,6 +370,4 @@ class TextStyle
         $this->backgroundColorSet = true;
         $this->backgroundColor = $backgroundColor;
     }
-
-
 }

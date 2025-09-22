@@ -516,7 +516,7 @@ class TableColumn
      * @param float $maxDetailRowHeight
      * @return void
      */
-    public function sizeColumn(Renderer $r, array $tableData, float $maxHeaderRowHeight, float $maxDetailRowHeight ): void
+    public function sizeColumn(Renderer $r, array $tableData, float $maxHeaderRowHeight, float $maxDetailRowHeight): void
     {
         $headerWidth = 0.0;
         if ($this->sizeWidthToHeader) {
@@ -599,7 +599,7 @@ class TableColumn
      * @param TableRow|null $row
      * @return string
      */
-    public function getString(bool $headerRow, ?TableRow $row) : string
+    public function getString(bool $headerRow, ?TableRow $row): string
     {
         if ($headerRow) {
             return $this->title;
@@ -632,7 +632,6 @@ class TableColumn
             } else {
                 $style = $this->detailRowTextStyle;
             }
-
         } else {
 
             if ($headerRow) {
@@ -663,6 +662,4 @@ class TableColumn
             $r->addLine($x, $y, $x, $y + $height, $this->rightPen->getExtent(), $this->rightPen->getDash(), $this->rightPen->getColor());
         }
     }
-
-
 }

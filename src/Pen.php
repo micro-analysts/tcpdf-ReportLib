@@ -132,7 +132,4 @@ class Pen
     {
         return $this->dash;
     }
-
 }
-
-

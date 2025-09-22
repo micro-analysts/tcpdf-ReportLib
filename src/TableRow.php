@@ -90,7 +90,7 @@ class TableRow
      * @param string $columnName
      * @return string
      */
-    public function getText(string $columnName) : string
+    public function getText(string $columnName): string
     {
         if (key_exists($columnName, $this->data)) {
             return $this->data[$columnName];
@@ -105,7 +105,7 @@ class TableRow
      * @param string $value
      * @return void
      */
-    public function setText(string $columnName, string $value) : void
+    public function setText(string $columnName, string $value): void
     {
         $this->data[$columnName] = $value;
     }
@@ -176,6 +176,4 @@ class TableRow
     {
         $this->joinEnd = $joinEnd;
     }
-
-
 }

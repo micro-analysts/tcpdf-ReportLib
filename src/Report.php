@@ -42,7 +42,7 @@ include_once "Renderer.php";
  * @class Report
  * This is the main class for reports in the ReportLib
  * It creates some basic frames and prints them to a PDF document
-  * @brief Main report class to create a report as a PDF document
+ * @brief Main report class to create a report as a PDF document
  * @author Michael Hodel - info@adiuvaris.ch
  */
 class Report
@@ -118,12 +118,12 @@ class Report
      * @return void
      * @throws Exception
      */
-    public function output(string $repFileName, string $action = 'I') : void
+    public function output(string $repFileName, string $action = 'I'): void
     {
         if ($this->isEndless()) {
             throw new Exception("Endless recursion loop in the report structure.");
         }
-        $this->printReport($this->renderer,$repFileName, $action);
+        $this->printReport($this->renderer, $repFileName, $action);
     }
 
     /**
@@ -131,7 +131,7 @@ class Report
      * The header, the footer and the body will be checked separately
      * @return bool
      */
-    public function isEndless() : bool
+    public function isEndless(): bool
     {
         $list = array();
         if ($this->header->isEndless($list)) {
@@ -148,7 +148,7 @@ class Report
      * @param string $colorName
      * @return string
      */
-    public function getColorByName(string $colorName) : string
+    public function getColorByName(string $colorName): string
     {
         return $this->renderer->getColorByName($colorName);
     }
@@ -343,6 +343,4 @@ class Report
             $r->output($repFileName, $action);
         }
     }
-
-
 }

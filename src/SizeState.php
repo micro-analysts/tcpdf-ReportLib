@@ -71,5 +71,4 @@ class SizeState
         $this->fits = true;
         $this->continued = false;
     }
-
 }

@@ -339,7 +339,7 @@ abstract class ContainerFrame extends ReportFrame
      * @param TextStyle $textStyle
      * @return TextFrame
      */
-    public function AddTextBlock(string $background, mixed $width, string $text, TextStyle $textStyle) : TextFrame
+    public function AddTextBlock(string $background, mixed $width, string $text, TextStyle $textStyle): TextFrame
     {
         $bf = $this->AddBlock($background, $width);
         return $bf->AddText($text, $textStyle);
@@ -418,7 +418,7 @@ abstract class ContainerFrame extends ReportFrame
      * @param float|string $width
      * @return BoxFrame
      */
-    protected function addBlock(string $background, mixed $width) : BoxFrame
+    protected function addBlock(string $background, mixed $width): BoxFrame
     {
         $bf = $this->AddBox($width);
         $bf->setBackground($background);
@@ -455,7 +455,7 @@ abstract class ContainerFrame extends ReportFrame
         return $pf;
     }
 
-        /**
+    /**
      * Resets the frame so the calculation can be started again
      * @param bool $keepTogether
      * @return void
@@ -524,8 +524,5 @@ abstract class ContainerFrame extends ReportFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
-    {
-    }
-
+    protected function doBeginPrint(Renderer $r): void {}
 }

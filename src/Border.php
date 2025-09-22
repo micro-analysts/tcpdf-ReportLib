@@ -94,7 +94,7 @@ class Border
      * @return void
      * @see Renderer, Rect
      */
-    public function drawBorder(Renderer $r, Rect $rect) : void
+    public function drawBorder(Renderer $r, Rect $rect): void
     {
         $this->drawLine($r, $this->topPen, $rect, Border::TOP);
         $this->drawLine($r, $this->rightPen, $rect, Border::RIGHT);
@@ -110,7 +110,7 @@ class Border
      * @return void
      * @see Pen
      */
-    public function setPen(Pen $pen) : void
+    public function setPen(Pen $pen): void
     {
         $this->topPen = clone $pen;
         $this->leftPen = clone $pen;
@@ -123,9 +123,9 @@ class Border
      * @param Size $toSize Size to which the border will be added
      * @return Size The resulting size after the border would have been painted
      */
-    public function addBorderSize(Size $toSize) : Size
+    public function addBorderSize(Size $toSize): Size
     {
-        $size = new Size(size:$toSize);
+        $size = new Size(size: $toSize);
         $size->height += $this->topPen->getExtent();
         $size->width += $this->rightPen->getExtent();
         $size->height += $this->bottomPen->getExtent();
@@ -139,9 +139,9 @@ class Border
      * @param Rect $forRect The rectangle in which the border will be painted
      * @return Rect The resulting rect after the border would have been painted
      */
-    public function getInnerRect(Rect $forRect) : Rect
+    public function getInnerRect(Rect $forRect): Rect
     {
-        $rect = new Rect(rect:$forRect);
+        $rect = new Rect(rect: $forRect);
 
         $rect->top += $this->topPen->getExtent();
         $rect->right -= $this->rightPen->getExtent();
@@ -219,7 +219,7 @@ class Border
     /**
      * @return float
      */
-    public function getLeftWidth() : float
+    public function getLeftWidth(): float
     {
         return $this->leftPen->getExtent();
     }
@@ -227,7 +227,7 @@ class Border
     /**
      * @return float
      */
-    public function getTopWidth() : float
+    public function getTopWidth(): float
     {
         return $this->topPen->getExtent();
     }
@@ -235,7 +235,7 @@ class Border
     /**
      * @return float
      */
-    public function getRightWidth() : float
+    public function getRightWidth(): float
     {
         return $this->rightPen->getExtent();
     }
@@ -243,7 +243,7 @@ class Border
     /**
      * @return float
      */
-    public function getBottomWidth() : float
+    public function getBottomWidth(): float
     {
         return $this->bottomPen->getExtent();
     }
@@ -262,7 +262,7 @@ class Border
      * </ul>
      * @return void
      */
-    protected function drawLine(Renderer $r, Pen $pen, Rect $rect, int $edge) : void
+    protected function drawLine(Renderer $r, Pen $pen, Rect $rect, int $edge): void
     {
         $width = $pen->getExtent();
         $color = $pen->getColor();
@@ -297,6 +297,4 @@ class Border
             $r->addLine($x1, $y1, $x2, $y2, $width, $dash, $color);
         }
     }
-
-
 }

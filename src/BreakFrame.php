@@ -116,7 +116,6 @@ class BreakFrame extends ReportFrame
 
             $sizeState->continued = true;
             $sizeState->requiredSize = $forRect->getSize();
-
         } else {
             if ($page == $this->pageNumber) {
 
@@ -140,9 +139,7 @@ class BreakFrame extends ReportFrame
      * @param Rect $inRect
      * @return void
      */
-    protected function doPrint(Renderer $r, Rect $inRect): void
-    {
-    }
+    protected function doPrint(Renderer $r, Rect $inRect): void {}
 
     /**
      * Will be called when the printing begins
@@ -150,9 +147,8 @@ class BreakFrame extends ReportFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
+    protected function doBeginPrint(Renderer $r): void
     {
         $this->firstTimeCalled = true;
     }
-
 }

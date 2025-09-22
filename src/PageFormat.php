@@ -127,7 +127,7 @@ class PageFormat
     /**
      * @return string
      */
-    public function getPageOrientation() : string
+    public function getPageOrientation(): string
     {
         return $this->pageOrientation;
     }
@@ -135,7 +135,7 @@ class PageFormat
     /**
      * @return string
      */
-    public function getPageSize() : string
+    public function getPageSize(): string
     {
         return $this->pageSize;
     }
@@ -219,5 +219,4 @@ class PageFormat
     {
         $this->mirrorMargins = $mirrorMargins;
     }
-
 }

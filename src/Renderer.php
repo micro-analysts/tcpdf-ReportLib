@@ -107,7 +107,7 @@ class Renderer
      * @param int $page Page number
      * @return Rect Printable area
      */
-    public function getPageBounds(int $page = 0) : Rect
+    public function getPageBounds(int $page = 0): Rect
     {
         if ($page == 0) {
             $page = $this->getCurrentPage();
@@ -119,7 +119,7 @@ class Renderer
 
         if ($pageFormat->isMirrorMargins()) {
             if ($page % 2 == 0) {
-                $pageBounds = new Rect($pageFormat->getMarginRight(), $pageFormat->getMarginTop(),$size->width - $pageFormat->getMarginLeft(), $size->height - $pageFormat->getMarginBottom());
+                $pageBounds = new Rect($pageFormat->getMarginRight(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginLeft(), $size->height - $pageFormat->getMarginBottom());
             } else {
                 $pageBounds = new Rect($pageFormat->getMarginLeft(), $pageFormat->getMarginTop(), $size->width - $pageFormat->getMarginRight(), $size->height - $pageFormat->getMarginBottom());
             }
@@ -136,7 +136,7 @@ class Renderer
      * @param int $page Page number
      * @return Size Paper size
      */
-    public function getPaperSize(int $page = 0) : Size
+    public function getPaperSize(int $page = 0): Size
     {
         if ($page == 0) {
             $page = $this->getCurrentPage();
@@ -169,7 +169,7 @@ class Renderer
      * @param int $page Page number
      * @return float
      */
-    public function getPrintableWidth(int $page = 0) : float
+    public function getPrintableWidth(int $page = 0): float
     {
         return $this->getPageBounds($page)->getWidth();
     }
@@ -180,7 +180,7 @@ class Renderer
      * @param int $page Page number
      * @return float
      */
-    public function getPrintableHeight(int $page = 0) : float
+    public function getPrintableHeight(int $page = 0): float
     {
         return $this->getPageBounds($page)->getHeight();
     }
@@ -191,7 +191,7 @@ class Renderer
      * @param PageFormat $pageFormat
      * @return void
      */
-    public function setPageFormat(int $fromPage, PageFormat $pageFormat) : void
+    public function setPageFormat(int $fromPage, PageFormat $pageFormat): void
     {
         $this->pageFormats[$fromPage] = $pageFormat;
     }
@@ -201,7 +201,7 @@ class Renderer
      * @param int $page
      * @return PageFormat
      */
-    protected function getPageFormat(int $page) : PageFormat
+    protected function getPageFormat(int $page): PageFormat
     {
         while (!key_exists($page, $this->pageFormats)) {
             $page--;
@@ -218,7 +218,7 @@ class Renderer
      * Returns the current page
      * @return int
      */
-    public function getCurrentPage() : int
+    public function getCurrentPage(): int
     {
         return $this->currentPage;
     }
@@ -227,7 +227,7 @@ class Renderer
      * Returns the number of all pages
      * @return int
      */
-    public function getTotalPages() : int
+    public function getTotalPages(): int
     {
         return $this->totalPages;
     }
@@ -254,7 +254,7 @@ class Renderer
      * Adds a page to the PDF-document
      * @return void
      */
-    public function addPage() : void
+    public function addPage(): void
     {
         $this->currentPage++;
 
@@ -270,7 +270,7 @@ class Renderer
      * Creates a new PDF document
      * @return void
      */
-    public function createNewPDF() : void
+    public function createNewPDF(): void
     {
         if (isset($this->pdf)) {
             $this->pdf->Close();
@@ -296,7 +296,7 @@ class Renderer
      * @param string $text
      * @return string
      */
-    public function replacePageVars(string $text) : string
+    public function replacePageVars(string $text): string
     {
         if (str_contains($text, "[VAR_PAGE]")) {
             $text = str_replace("[VAR_PAGE]", $this->currentPage, $text);
@@ -315,7 +315,7 @@ class Renderer
      * @param string $action
      * @return void
      */
-    public function output(string $fileName, string $action) : void
+    public function output(string $fileName, string $action): void
     {
         $this->pdf->Output($fileName, $action);
     }
@@ -358,7 +358,7 @@ class Renderer
      * @param string $vAlignment
      * @return float
      */
-    public function getFontHeight(TextStyle $textStyle, string $hAlignment = 'L', string $vAlignment = 'T') : float
+    public function getFontHeight(TextStyle $textStyle, string $hAlignment = 'L', string $vAlignment = 'T'): float
     {
         $testText = 'Qq';
 
@@ -367,7 +367,7 @@ class Renderer
         $hAlign = $hAlignment;
         $vAlign = $vAlignment;
 
-        $this->pdf->setFont($textStyle->getFontFamily(), $style, $textStyle->getSize() );
+        $this->pdf->setFont($textStyle->getFontFamily(), $style, $textStyle->getSize());
         $start_y = $this->pdf->GetY();
         $this->pdf->MultiCell(20, 0, $testText, 0, $hAlign, false, 1, null, null, true, 0, false, false, 0, $vAlign);
         $end_y = $this->pdf->GetY();
@@ -386,7 +386,7 @@ class Renderer
      * @param float $maxWidth
      * @return Size
      */
-    public function calcTextSize(TextStyle $textStyle, string $textToPrint, string $hAlignment = 'L', string $vAlignment = 'T', float $maxWidth = 0.0) : Size
+    public function calcTextSize(TextStyle $textStyle, string $textToPrint, string $hAlignment = 'L', string $vAlignment = 'T', float $maxWidth = 0.0): Size
     {
         $size = new Size();
 
@@ -439,7 +439,7 @@ class Renderer
      * @param float $height
      * @return string
      */
-    public function trimText(string $text, TextStyle $textStyle, bool $wrapText, float $width, string $hAlignment = 'L', string $vAlignment = 'T', float $height = 0.0) : string
+    public function trimText(string $text, TextStyle $textStyle, bool $wrapText, float $width, string $hAlignment = 'L', string $vAlignment = 'T', float $height = 0.0): string
     {
         $style = $this->getStyle($textStyle);
 
@@ -480,7 +480,6 @@ class Renderer
                     }
                 } while (true);
             }
-
         } else {
 
             $text_height = $this->calcTextSize($textStyle, $text, $hAlignment, $vAlignment, $width);
@@ -496,7 +495,7 @@ class Renderer
                     $text_height = $this->calcTextSize($textStyle, $checkText, $hAlignment, $vAlignment, $width);
 
                     if (round($text_height->height, 2) <= round($height, 2)) {
-                          if (strlen($checkText) == strlen($lastText)) {
+                        if (strlen($checkText) == strlen($lastText)) {
                             $text = $checkText;
                             break;
                         }
@@ -544,10 +543,10 @@ class Renderer
      * @param string $textColor
      * @return float
      */
-    public function addTextBlock(string $text, TextStyle $textStyle, Rect $textLayout, string $hAlignment = 'L', string $vAlignment = 'T', string $textColor = "#000000") : float
+    public function addTextBlock(string $text, TextStyle $textStyle, Rect $textLayout, string $hAlignment = 'L', string $vAlignment = 'T', string $textColor = "#000000"): float
     {
         $style = $this->getStyle($textStyle);
-        $this->pdf->setFont($textStyle->getFontFamily(), $style, $textStyle->getSize() );
+        $this->pdf->setFont($textStyle->getFontFamily(), $style, $textStyle->getSize());
         $this->pdf->setTextColorArray($this->getColorArray($textColor));
 
         $start_y = $textLayout->top;
@@ -566,7 +565,7 @@ class Renderer
      * @param float $h
      * @return void
      */
-    public function addImage(string $fileName, float $x, float $y, float $w, float $h) : void
+    public function addImage(string $fileName, float $x, float $y, float $w, float $h): void
     {
         $this->pdf->Image($fileName, $x, $y, $w, $h, resize: true);
     }
@@ -581,7 +580,7 @@ class Renderer
      * @param float $h
      * @return void
      */
-    public function addBarCode(string $code, string $barcodeType, float $x, float $y, float $w, float $h) : void
+    public function addBarCode(string $code, string $barcodeType, float $x, float $y, float $w, float $h): void
     {
         $style = array();
         $this->pdf->write2DBarcode($code, $barcodeType, $x, $y, $w, $h, $style);
@@ -592,7 +591,7 @@ class Renderer
      * @param TextStyle $textStyle
      * @return string
      */
-    protected function getStyle(TextStyle $textStyle) : string
+    protected function getStyle(TextStyle $textStyle): string
     {
         $style = '';
         if ($textStyle->isBold()) {
@@ -613,7 +612,7 @@ class Renderer
      * @param string $color
      * @return array|int[]
      */
-    protected function getColorArray(string $color) : array
+    protected function getColorArray(string $color): array
     {
         // 6 hex chars would be ok
         if (strlen($color) == 6) {
@@ -622,7 +621,7 @@ class Renderer
 
         // Are there only hex chars and a length of 7 chars
         if (strlen($color) != 7 || trim($color, '0..9A..Fa..f#') != '') {
-            return array(0,0,0);
+            return array(0, 0, 0);
         }
 
         // 6-digit RGB hexadecimal representation '#RRGGBB'
@@ -638,13 +637,11 @@ class Renderer
      * @param string $colorName
      * @return string
      */
-    public function getColorByName(string $colorName) : string
+    public function getColorByName(string $colorName): string
     {
         if (key_exists($colorName, TCPDF_COLORS::$webcolor)) {
             return "#" . TCPDF_COLORS::$webcolor[$colorName];
         }
         return "#000000";
     }
-
-
 }

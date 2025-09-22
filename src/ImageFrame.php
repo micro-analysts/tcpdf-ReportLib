@@ -130,7 +130,7 @@ class ImageFrame extends ReportFrame
      * @param Rect $rect
      * @return Rect
      */
-    protected function getImageRect(Rect $rect) : Rect
+    protected function getImageRect(Rect $rect): Rect
     {
         $maxSize = $rect->getSize();
         $scaleW = $maxSize->width / $this->width;
@@ -153,7 +153,7 @@ class ImageFrame extends ReportFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $this->imageRect = $this->getImageRect($newRect);
 
@@ -200,7 +200,7 @@ class ImageFrame extends ReportFrame
      * @return void
      * @throws Exception
      */
-    protected function doBeginPrint(Renderer $r) : void
+    protected function doBeginPrint(Renderer $r): void
     {
         // Determine the real size of the image
         if (file_exists($this->fileName)) {
@@ -215,5 +215,4 @@ class ImageFrame extends ReportFrame
             throw new Exception("Image file does not exist.");
         }
     }
-
 }

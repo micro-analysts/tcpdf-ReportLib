@@ -219,5 +219,4 @@ class FixposFrame extends ContainerFrame
             }
         }
     }
-
 }

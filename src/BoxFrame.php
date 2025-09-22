@@ -186,7 +186,7 @@ class BoxFrame extends ContainerFrame
      * @param ReportFrame $frame
      * @return int Number of frames (in this case always 1)
      */
-    public function addFrame(ReportFrame $frame) :  int
+    public function addFrame(ReportFrame $frame): int
     {
         if ($this->getFrameCount() > 0) {
             $this->clearFrames();
@@ -201,7 +201,7 @@ class BoxFrame extends ContainerFrame
      * @param Pen $val
      * @return void
      */
-    public function setBorderPen(Pen $val) : void
+    public function setBorderPen(Pen $val): void
     {
         $this->border->setPen($val);
     }
@@ -211,7 +211,7 @@ class BoxFrame extends ContainerFrame
      * to set any line of the border individually
      * @return Border
      */
-    public function getBorder() : Border
+    public function getBorder(): Border
     {
         return $this->border;
     }
@@ -221,7 +221,7 @@ class BoxFrame extends ContainerFrame
      * @param float $val
      * @return void
      */
-    public function setPadding(float $val) : void
+    public function setPadding(float $val): void
     {
         $this->paddingTop = $val;
         $this->paddingRight = $val;
@@ -233,7 +233,7 @@ class BoxFrame extends ContainerFrame
      * @param float|string $width Width of the box in mm or % - float->mm, string->"%"
      * @return void
      */
-    public function setWidth(mixed $width) : void
+    public function setWidth(mixed $width): void
     {
         $this->width = floatval($width);
         if (is_string($width)) {
@@ -245,7 +245,7 @@ class BoxFrame extends ContainerFrame
      * @param float|string $height Height of the box in mm or % - float->mm, string->"%"
      * @return void
      */
-    public function setHeight(mixed $height) : void
+    public function setHeight(mixed $height): void
     {
         $this->heightInPercent = false;
         $this->height = floatval($height);
@@ -376,9 +376,9 @@ class BoxFrame extends ContainerFrame
      * @param Rect $fromRect
      * @return Rect
      */
-    protected function getMaxContentRect(Rect $fromRect) : Rect
+    protected function getMaxContentRect(Rect $fromRect): Rect
     {
-        $rect = new Rect(rect:$fromRect);
+        $rect = new Rect(rect: $fromRect);
 
         $rect->left += $this->border->getLeftWidth() + $this->paddingLeft;
         $rect->top += $this->border->getTopWidth() + $this->paddingTop;
@@ -415,7 +415,7 @@ class BoxFrame extends ContainerFrame
                     $frameHeight = $this->parentFrame->getSizingBounds()->getHeight();
                 }
 
-                $contentHeight = ($frameHeight* $this->height / 100.0)
+                $contentHeight = ($frameHeight * $this->height / 100.0)
                     - $this->marginTop - $this->marginBottom
                     - $this->border->getTopWidth() - $this->border->getBottomWidth()
                     - $this->paddingTop - $this->paddingBottom;
@@ -441,7 +441,7 @@ class BoxFrame extends ContainerFrame
      * @param Rect $newRect
      * @return SizeState
      */
-    protected function rectChanged(Rect $originalRect, Rect $newRect) : SizeState
+    protected function rectChanged(Rect $originalRect, Rect $newRect): SizeState
     {
         $contentSize = $this->getSize();
 
@@ -456,7 +456,7 @@ class BoxFrame extends ContainerFrame
      * Returns true if the width has to be calculated by the contents of the box
      * @return bool
      */
-    protected function sizeToContentsWidth() : bool
+    protected function sizeToContentsWidth(): bool
     {
         return ($this->width == 0.0);
     }
@@ -465,7 +465,7 @@ class BoxFrame extends ContainerFrame
      * Returns true if the height has to be calculated by the contents of the box
      * @return bool
      */
-    protected function sizeToContentsHeight() : bool
+    protected function sizeToContentsHeight(): bool
     {
         return ($this->height == 0.0);
     }
@@ -476,7 +476,7 @@ class BoxFrame extends ContainerFrame
      * @param Size $contentSize
      * @return Rect
      */
-    protected function getBorderRect(Rect $rect, Size $contentSize) : Rect
+    protected function getBorderRect(Rect $rect, Size $contentSize): Rect
     {
         $borderSize = $rect->getSize();
         if ($this->sizeToContentsWidth()) {
@@ -525,7 +525,7 @@ class BoxFrame extends ContainerFrame
      * @param Rect $inRect Rect into which the box will be printed
      * @return void
      */
-    protected function doPrint(Renderer $r, Rect $inRect) : void
+    protected function doPrint(Renderer $r, Rect $inRect): void
     {
         $this->border->drawBorder($r, $this->borderRect->getRectWithSizeAndAlign());
 
@@ -536,5 +536,4 @@ class BoxFrame extends ContainerFrame
             $this->getCurrentFrame()->print($r, $this->contentRect);
         }
     }
-
 }

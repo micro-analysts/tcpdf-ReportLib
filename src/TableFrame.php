@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Adi\ReportLib;
 
@@ -651,7 +651,6 @@ class TableFrame extends ReportFrame
         $rect = $forRect->getRectWithSizeAndAlign($size, $this->hAlignment, $this->vAlignment);
 
         return new Rect($rect->left, $rect->top, $rect->right, $rect->bottom);
-
     }
 
     /**
@@ -777,7 +776,7 @@ class TableFrame extends ReportFrame
      * @param float $width
      * @return void
      */
-    protected function checkForSubRows(float $width) : void
+    protected function checkForSubRows(float $width): void
     {
         $colsWidth = 0.0;
         for ($colNumber = 0; $colNumber < count($this->columns); $colNumber++) {
@@ -1044,7 +1043,6 @@ class TableFrame extends ReportFrame
             if (!$sizeOnly) {
                 $y -= $pen->getExtent() / 2.0;
                 $r->addLine($x, $y, $x + $length, $y, $pen->getExtent(), $pen->getDash(), $pen->getColor());
-
             }
             $height = $pen->getExtent();
         }
@@ -1081,7 +1079,7 @@ class TableFrame extends ReportFrame
      * @param Rect $rect
      * @return void
      */
-    protected function printAllColumnLines(Renderer $r, Rect $rect) : void
+    protected function printAllColumnLines(Renderer $r, Rect $rect): void
     {
         if ($this->numSubRows > 1 || !$this->columnLines) {
             return;
@@ -1170,7 +1168,7 @@ class TableFrame extends ReportFrame
             $sizeStates->continued = true;
         }
 
-        $sizeStates->requiredSize = $this->border->addBorderSize(new Size ($this->width, $this->tableHeightForPage));
+        $sizeStates->requiredSize = $this->border->addBorderSize(new Size($this->width, $this->tableHeightForPage));
 
         return $sizeStates;
     }
@@ -1211,5 +1209,4 @@ class TableFrame extends ReportFrame
 
         $this->dataRowsFit = 0;
     }
-
 }

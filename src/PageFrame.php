@@ -166,7 +166,7 @@ class PageFrame extends ContainerFrame
      * @param Renderer $r
      * @return bool
      */
-    public function printOnPage(Renderer $r) : bool
+    public function printOnPage(Renderer $r): bool
     {
         $page = $r->getCurrentPage();
 
@@ -197,8 +197,5 @@ class PageFrame extends ContainerFrame
      * @param Renderer $r
      * @return void
      */
-    protected function doBeginPrint(Renderer $r) : void
-    {
-    }
-
+    protected function doBeginPrint(Renderer $r): void {}
 }
