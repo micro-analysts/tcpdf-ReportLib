@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-namespace MicroAnalysts\TcpdfReportLib;
+namespace Adi\ReportLib;
 
 include_once __DIR__ . "/../config/config.php";
 include_once "Size.php";

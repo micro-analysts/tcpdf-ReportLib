@@ -30,10 +30,10 @@
 
 include_once "../src/Report.php";
 
-use MicroAnalysts\TcpdfReportLib as ReportLib;
+use Adi\ReportLib as ReportLib;
 
 // PageFormat for format letter, landscape with margins top = 1 inch and half an inch on the other sides
-$pageFormat = new ReportLib\PageFormat("Letter", 'L', 25.4 / 2.0, 25.4, 25.4 / 2.0, 25.4 / 2.0);
+$pageFormat = new ReportLib\PageFormat("Letter", 'L', 25.4 / 2.0, 25.4,25.4 / 2.0,25.4 / 2.0);
 
 // Create report instance with the pageFormat
 $report = new ReportLib\Report($pageFormat);
@@ -42,7 +42,7 @@ $report = new ReportLib\Report($pageFormat);
 $body = $report->getBody();
 
 // Create a box around the printable area
-$box = $body->AddHBox(extent: 0.1);
+$box = $body->AddHBox(extent:0.1);
 $box->setUseFullHeight(true);
 
 // Produce the output of the report

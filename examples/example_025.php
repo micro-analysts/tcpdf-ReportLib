@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use MicroAnalysts\TcpdfReportLib as ReportLib;
+use Adi\ReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -54,7 +54,7 @@ $body->AddPageBreak();
 $report->output(__DIR__ . "/example_025.pdf", 'I');
 
 
-function addHeader(ReportLib\SerialFrame $header): void
+function addHeader(ReportLib\SerialFrame $header) : void
 {
     $tsBold = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::BOLD);
 
@@ -70,7 +70,7 @@ function addHeader(ReportLib\SerialFrame $header): void
     $tf = $hf->AddText("Header for all pages but not on the first page.", $tsBold);
 }
 
-function addFooter(ReportLib\SerialFrame $footer, int $onPageNr, string $hAlign): void
+function addFooter(ReportLib\SerialFrame $footer, int $onPageNr, string $hAlign) : void
 {
     $tsNormal = ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL);
 
@@ -85,3 +85,4 @@ function addFooter(ReportLib\SerialFrame $footer, int $onPageNr, string $hAlign)
     $tf->setHAlignment($hAlign);
     $tf->setVAlignment('T');
 }
+

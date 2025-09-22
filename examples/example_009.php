@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use MicroAnalysts\TcpdfReportLib as ReportLib;
+use Adi\ReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -49,7 +49,7 @@ $text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commod
 // Add a paragraph of text 20 times to the report body
 $body->AddVDistance(5.0);
 for ($i = 0; $i < 20; $i++) {
-    $body->AddText("Paragraph number " . $i + 1, $tsNormal);
+    $body->AddText("Paragraph number " . $i+1, $tsNormal);
     $body->AddText($text, $tsNormal);
     $body->AddVDistance(2.0);
 }
@@ -65,7 +65,7 @@ $pb = $body->AddPageBreak($pageFormat);
 
 // Add a paragraph of text 10 times to the report body
 for ($i = 0; $i < 10; $i++) {
-    $body->AddText("Paragraph number " . $i + 1, $tsNormal);
+    $body->AddText("Paragraph number " . $i+1, $tsNormal);
     $body->AddText($text, $tsNormal);
     $body->AddVDistance(3.0);
 }
@@ -84,7 +84,7 @@ $pb = $body->AddPageBreak($pageFormat);
 
 // Add a paragraph of text 10 times to the report body to force an automatic page break
 for ($i = 0; $i < 10; $i++) {
-    $body->AddText("Paragraph number " . $i + 1, $tsNormal);
+    $body->AddText("Paragraph number " . $i+1, $tsNormal);
     $body->AddText($text, $tsNormal);
     $body->AddVDistance(3.0);
 }
@@ -94,3 +94,4 @@ for ($i = 0; $i < 10; $i++) {
 // Produce the output of the report
 //  uses the same params as TCPDF (F = File, I = Preview etc.)
 $report->output(__DIR__ . "/example_009.pdf", 'I');
+

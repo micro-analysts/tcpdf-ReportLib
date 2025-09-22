@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MicroAnalysts\\TcpdfReportLib\\": "src"
+            "Adi\\ReportLib\\": "src"
         }
     }
 }

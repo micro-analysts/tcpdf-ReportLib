@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-namespace MicroAnalysts\TcpdfReportLib;
+namespace Adi\ReportLib;
 
 /**
  * @class FixposFrame

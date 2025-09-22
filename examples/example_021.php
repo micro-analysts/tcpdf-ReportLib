@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use MicroAnalysts\TcpdfReportLib as ReportLib;
+use Adi\ReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -70,3 +70,4 @@ $body->AddVDistance(10.0);
 // Produce the output of the report
 //  uses the same params as TCPDF (F = File, I = Preview etc.)
 $report->output(__DIR__ . "/example_021.pdf", 'I');
+

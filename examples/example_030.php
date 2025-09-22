@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use MicroAnalysts\TcpdfReportLib as ReportLib;
+use Adi\ReportLib as ReportLib;
 
 $pageFormat = new ReportLib\PageFormat("A4", 'P', 25.0, 10.0, 25.0, 10.0);
 $report = new ReportLib\Report($pageFormat);
@@ -55,7 +55,7 @@ printQRSlip($report);
 try {
     $report->output(__DIR__ . "/example_030.pdf");
 } catch (Exception $e) {
-    echo ($e);
+    echo($e);
 }
 
 

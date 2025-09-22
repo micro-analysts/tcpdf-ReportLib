@@ -30,7 +30,7 @@
 
 declare(strict_types=1);
 
-namespace MicroAnalysts\TcpdfReportLib;
+namespace Adi\ReportLib;
 
 /**
  * @class TableFrame

@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-namespace MicroAnalysts\TcpdfReportLib;
+namespace Adi\ReportLib;
 
 include_once "ReportFrame.php";
 
