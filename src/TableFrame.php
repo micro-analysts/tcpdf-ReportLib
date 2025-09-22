@@ -948,17 +948,18 @@ class TableFrame extends ReportFrame
 
                         /** @var TableColumn $colToStart */
                         $colToStart = $this->columns[$colNumber];
-                        $colW = $colToStart->getWidth();
+                        $colW = $colToStart->getWidthToUse();
 
                         // Add additional column width get the total width of the joined column
                         for ($joinCol = $row->getJoinStart() + 1; $joinCol <= $row->getJoinEnd() && $joinCol < count($this->columns); $joinCol++) {
 
                             /** @var TableColumn $colInJoin */
                             $colInJoin = $this->columns[$joinCol];
-                            $colW += $colInJoin->getWidth();
+                            $colW += $colInJoin->getWidthToUse();
 
                             // Remove text from columns in the join
                             $row->setText($colInJoin->getColumnName(), "");
+                            $colNumber++;
                         }
                     }
                 }
@@ -970,7 +971,7 @@ class TableFrame extends ReportFrame
             $size = $column->sizePaintCell($r, $text, $textStyle, $xPos, $yPos, $colW, $maxHeight, $sizeOnly);
             $currRowHeight = max($currRowHeight, $this->getValidHeight($size->height, $isHeader));
 
-            $xPos += $column->getWidthToUse();
+            $xPos += $colW;
 
             if ($column->isLineBreak()) {
                 if ($sizeOnly) {
