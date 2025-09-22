@@ -509,6 +509,10 @@ class TableColumn
 
 
     /**
+     * This is unused?
+     * 
+     * @deprecated
+     * 
      * Calculates the width of the column
      * @param Renderer $r
      * @param array $tableData
@@ -516,39 +520,39 @@ class TableColumn
      * @param float $maxDetailRowHeight
      * @return void
      */
-    public function sizeColumn(Renderer $r, array $tableData, float $maxHeaderRowHeight, float $maxDetailRowHeight): void
-    {
-        $headerWidth = 0.0;
-        if ($this->sizeWidthToHeader) {
+    // public function sizeColumn(Renderer $r, array $tableData, float $maxHeaderRowHeight, float $maxDetailRowHeight): void
+    // {
+    //     $headerWidth = 0.0;
+    //     if ($this->sizeWidthToHeader) {
 
-            $text = $this->title;
-            $textStyle = $this->getTextStyle(null, true, false);
+    //         $text = $this->title;
+    //         $textStyle = $this->getTextStyle(null, true, false);
 
-            $headerSize = $this->sizePaintCell($r, $text, $textStyle, 0.0, 0.0, $this->width, $maxHeaderRowHeight, true);
-            $headerWidth = $headerSize->width;
-        }
+    //         $headerSize = $this->sizePaintCell($r, $text, $textStyle, 0.0, 0.0, $this->width, $maxHeaderRowHeight, true);
+    //         $headerWidth = $headerSize->width;
+    //     }
 
-        $contentWidth = 0.0;
-        if ($this->sizeWidthToContents) {
-            $alternatingRow = false;
-            foreach ($tableData as $row) {
-                $text = $row->getText($this->columnName);
-                $textStyle = $this->getTextStyle($row, false, $alternatingRow);
+    //     $contentWidth = 0.0;
+    //     if ($this->sizeWidthToContents) {
+    //         $alternatingRow = false;
+    //         foreach ($tableData as $row) {
+    //             $text = $row->getText($this->columnName);
+    //             $textStyle = $this->getTextStyle($row, false, $alternatingRow);
 
-                $cellSize = $this->sizePaintCell($r, $text, $textStyle, 0.0, 0.0, $this->width, $maxDetailRowHeight, true);
+    //             $cellSize = $this->sizePaintCell($r, $text, $textStyle, 0.0, 0.0, $this->width, $maxDetailRowHeight, true);
 
-                $contentWidth = max($contentWidth, $cellSize->width);
-                $alternatingRow = !$alternatingRow;
-            }
-        }
+    //             $contentWidth = max($contentWidth, $cellSize->width);
+    //             $alternatingRow = !$alternatingRow;
+    //         }
+    //     }
 
-        $maxUsedWidth = max($headerWidth, $contentWidth);
-        if ($maxUsedWidth > 0 && $maxUsedWidth < $this->width) {
-            $this->widthToUse = $maxUsedWidth;
-        } else {
-            $this->widthToUse = $this->width;
-        }
-    }
+    //     $maxUsedWidth = max($headerWidth, $contentWidth);
+    //     if ($maxUsedWidth > 0 && $maxUsedWidth < $this->width) {
+    //         $this->widthToUse = $maxUsedWidth;
+    //     } else {
+    //         $this->widthToUse = $this->width;
+    //     }
+    // }
 
     /**
      * Calculates the size of the column
@@ -560,15 +564,41 @@ class TableColumn
      * @param float $width
      * @param float $maxHeight
      * @param bool $sizeOnly
+     * @param string|null $hAlign If set, the horizontal alignment to use for sizing/painting
+     * @param string|null $vAlign If set, the vertical alignment to use for sizing/painting
      * @return Size
      */
-    public function sizePaintCell(Renderer $r, string $text, TextStyle $textStyle, float $x, float $y, float $width, float $maxHeight, bool $sizeOnly): Size
-    {
+    public function sizePaintCell(
+        Renderer $r,
+        string $text,
+        TextStyle $textStyle,
+        float $x,
+        float $y,
+        float $width,
+        float $maxHeight,
+        bool $sizeOnly,
+        ?string $hAlign = null,
+        ?string $vAlign = null
+    ): Size {
         $rect = new Rect($x, $y, $x + $width, $y + $maxHeight);
-        $innerBounds = $rect->getRectWithMargins($this->paddingTop, $this->paddingRight + $this->rightPen->getExtent(), $this->paddingBottom, $this->paddingLeft);
+        $innerBounds = $rect->getRectWithMargins(
+            $this->paddingTop,
+            $this->paddingRight + $this->rightPen->getExtent(),
+            $this->paddingBottom,
+            $this->paddingLeft
+        );
+
+        $hAlign ??= $this->hAlignment;
+        $vAlign ??= $this->vAlignment;
 
         if ($sizeOnly) {
-            $stringSize = $r->calcTextSize($textStyle, $text, $this->hAlignment, $this->vAlignment, $innerBounds->getWidth());
+            $stringSize = $r->calcTextSize(
+                $textStyle,
+                $text,
+                $hAlign,
+                $vAlign,
+                $innerBounds->getWidth()
+            );
 
             $sideMargins = $this->paddingLeft + $this->paddingRight + $this->rightPen->getExtent();
             $topBottomMargins = $this->paddingTop + $this->paddingBottom;
@@ -585,9 +615,9 @@ class TableColumn
 
             $stringSize = new Size($innerBounds->getWidth(), $innerBounds->getHeight());
 
-            $textLayout = $innerBounds->getRectWithSizeAndAlign($stringSize, $this->hAlignment, $this->vAlignment);
+            $textLayout = $innerBounds->getRectWithSizeAndAlign($stringSize, $hAlign, $vAlign);
 
-            $textHeight = $r->addTextBlock($text, $textStyle, $textLayout, $this->hAlignment, $this->vAlignment, $textStyle->getTextColor());
+            $textHeight = $r->addTextBlock($text, $textStyle, $textLayout, $hAlign, $vAlign, $textStyle->getTextColor());
             $textLayout->top += $textHeight;
         }
         return $stringSize;

@@ -968,7 +968,18 @@ class TableFrame extends ReportFrame
             $text = $column->getString($isHeader, $row);
             $textStyle = $column->getTextStyle($row, $isHeader, $altRow);
 
-            $size = $column->sizePaintCell($r, $text, $textStyle, $xPos, $yPos, $colW, $maxHeight, $sizeOnly);
+            $size = $column->sizePaintCell(
+                $r,
+                $text,
+                $textStyle,
+                $xPos,
+                $yPos,
+                $colW,
+                $maxHeight,
+                $sizeOnly,
+                $row?->getHAlignment($column->getColumnName()),
+                $row?->getVAlignment($column->getColumnName()),
+            );
             $currRowHeight = max($currRowHeight, $this->getValidHeight($size->height, $isHeader));
 
             $xPos += $colW;

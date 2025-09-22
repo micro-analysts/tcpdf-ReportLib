@@ -68,6 +68,18 @@ class TableRow
     protected int $joinEnd;
 
     /**
+     * An associative array of column fieldName to row-specific horizontal alignment.
+     * @var array<string, string>
+     */
+    protected array $hAlignments = [];
+
+    /**
+     * An associative array of column fieldName to row-specific vertical alignment.
+     * @var array<string, string>
+     */
+    protected array $vAlignments = [];
+
+    /**
      * Class constructor
      * @param string $rowType Can be one of
      * <ul>
@@ -175,5 +187,25 @@ class TableRow
     public function setJoinEnd(int $joinEnd): void
     {
         $this->joinEnd = $joinEnd;
+    }
+
+    public function setHAlignment(string $fieldName, ?string $alignment): void
+    {
+        $this->hAlignments[$fieldName] = $alignment;
+    }
+
+    public function getHAlignment(string $fieldName): ?string
+    {
+        return $this->hAlignments[$fieldName] ?? null;
+    }
+
+    public function setVAlignment(string $fieldName, ?string $alignment): void
+    {
+        $this->vAlignments[$fieldName] = $alignment;
+    }
+
+    public function getVAlignment(string $fieldName): ?string
+    {
+        return $this->vAlignments[$fieldName] ?? null;
     }
 }
