@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-namespace Adi\ReportLib;
+namespace MicroAnalysts\TcpdfReportLib;
 
 /**
  * @class Size

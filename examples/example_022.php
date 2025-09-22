@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use Adi\ReportLib as ReportLib;
+use MicroAnalysts\TcpdfReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -77,7 +77,7 @@ $body->AddVDistance(10.0);
 $sf = $body->AddHContainer();
 
 // First column with a QR-code
-$sf->AddBarcode("adiuvaris.ch/reportlib", "QRCODE",40.0, 40.0);
+$sf->AddBarcode("adiuvaris.ch/reportlib", "QRCODE", 40.0, 40.0);
 $sf->AddHDistance(5.0);
 
 // Second column with an image

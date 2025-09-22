@@ -41,7 +41,7 @@ $ composer require adiuvaris/ReportLib
 ``` php
 <?php
 require __DIR__ . "/vendor/autoload.php";
-use Adi\ReportLib as ReportLib;
+use MicroAnalysts\TcpdfReportLib as ReportLib;
 $rp = new ReportLib\Report();
 $rp->getBody()->AddText("ReportLib test.",ReportLib\TextStyles::getTextStyle(ReportLib\TextStyles::NORMAL));
 $rp->output(__DIR__ . "/test.pdf");

@@ -31,7 +31,7 @@
 
 include_once "../src/Report.php";
 
-use Adi\ReportLib as ReportLib;
+use MicroAnalysts\TcpdfReportLib as ReportLib;
 
 // Create report instance
 $report = new ReportLib\Report();
@@ -104,13 +104,13 @@ function addText(ReportLib\Report $report): void
 
     $body = $report->getBody();
 
-    $body->AddText ("Project Examples", $tsHeading1);
-    $body->AddVDistance (10.0);
+    $body->AddText("Project Examples", $tsHeading1);
+    $body->AddVDistance(10.0);
 
-    $body->AddText ("PHP library 'ReportLib'", $tsHeading2);
-    $body->AddText ("PHP library for dynamic PDF reports using the TCPDF library", $tsBold);
+    $body->AddText("PHP library 'ReportLib'", $tsHeading2);
+    $body->AddText("PHP library for dynamic PDF reports using the TCPDF library", $tsBold);
 
-    $body->AddVDistance (20.0);
+    $body->AddVDistance(20.0);
 }
 
 

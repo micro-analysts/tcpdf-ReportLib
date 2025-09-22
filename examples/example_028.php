@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use Adi\ReportLib as ReportLib;
+use MicroAnalysts\TcpdfReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -64,7 +64,7 @@ $box = $body->AddBox();
 $box->setKeepTogether(true);
 $vc = $box->AddVContainer();
 for ($i = 0; $i < 20; $i++) {
-    $vc->AddText("Paragraph number " . $i+1, $tsNormal);
+    $vc->AddText("Paragraph number " . $i + 1, $tsNormal);
     $vc->AddText($text, $tsNormal);
     $vc->AddVDistance(2.0);
 }
@@ -114,4 +114,3 @@ try {
 }
 
 echo $errorText;
-

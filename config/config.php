@@ -28,7 +28,7 @@
  * //============================================================+
  */
 
-namespace Adi\ReportLib;
+namespace MicroAnalysts\TcpdfReportLib;
 
 /**
  * Default page format
@@ -165,5 +165,3 @@ const DEF_TEXT_FONT_SIZE_DELTA_SMALL = -1.0;
  * Default font family for text styles
  */
 const DEF_TEXT_FONT_FAMILY = "Helvetica";
-
-

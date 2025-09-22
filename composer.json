@@ -1,29 +1,36 @@
 {
-    "name" : "adiuvaris/reportlib",
-    "description" : "A library to create dynamic pdf reports",
+    "name": "micro-analysts/tcpdf-reportlib",
+    "description": "A library to create dynamic pdf reports, forked and updated by MAA",
     "keywords": [
+        "micro-analysts",
         "adiuvaris",
         "pdf",
         "reportlib",
         "tcpdf"
     ],
-    "homepage" : "https://www.adiuvaris.ch/reportlib",
-    "license" : "LGPL-3.0-only",
-    "authors" : [
+    "homepage": "https://www.adiuvaris.ch/reportlib",
+    "license": "LGPL-3.0-only",
+    "authors": [
         {
             "name": "Michael Hodel",
             "email": "info@adiuvaris.ch",
             "homepage": "https://www.adiuvaris.ch",
             "role": "Developer"
+        },
+        {
+            "name": "Drew Ritter",
+            "email": "dritter@razelon.com",
+            "homepage": "https://www.micro-analysts.com",
+            "role": "Developer"
         }
     ],
-    "require" : {
-        "php" : "^8.1.0",
-        "tecnickcom/tcpdf" : "^6.6.2"
+    "require": {
+        "php": "^8.1.0",
+        "tecnickcom/tcpdf": "^6.6.2"
     },
-    "autoload" : {
+    "autoload": {
         "psr-4": {
-            "Adi\\ReportLib\\": "src"
+            "MicroAnalysts\\TcpdfReportLib\\": "src"
         }
     }
 }

@@ -30,7 +30,7 @@
 
 include_once "../src/Report.php";
 
-use Adi\ReportLib as ReportLib;
+use MicroAnalysts\TcpdfReportLib as ReportLib;
 
 // Create report instance
 //  default format A4, portrait with margins left = 20mm, top = 10mm, right = 10mm and bottom = 10mm
@@ -40,7 +40,7 @@ $report = new ReportLib\Report();
 $body = $report->getBody();
 
 // Create a box around the printable area
-$box = $body->AddHBox(extent:0.1);
+$box = $body->AddHBox(extent: 0.1);
 $box->setUseFullHeight(true);
 
 // Produce the output of the report
