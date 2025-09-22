@@ -30,6 +30,8 @@
 
 namespace Adi\ReportLib;
 
+use JsonSerializable;
+
 include_once __DIR__ . "/../config/config.php";
 
 /**
@@ -39,7 +41,7 @@ include_once __DIR__ . "/../config/config.php";
  * @brief Class representing a text style that can be used in a report
  * @author Michael Hodel - info@adiuvaris.ch
  */
-class TextStyle
+class TextStyle implements JsonSerializable
 {
     /**
      * Base text style
@@ -186,6 +188,33 @@ class TextStyle
         }
     }
 
+    public function clone(string $name): self
+    {
+        return (clone $this)
+            ->setName($name);
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'name' => $this->name,
+            'bold' => $this->isBold(),
+            'boldSet' => $this->boldSet,
+            'italic' => $this->isItalic(),
+            'italicSet' => $this->italicSet,
+            'underline' => $this->isUnderline(),
+            'underlineSet' => $this->underlineSet,
+            'size' => $this->getSize(),
+            'sizeSet' => $this->sizeSet,
+            'fontFamily' => $this->getFontFamily(),
+            'fontFamilySet' => $this->fontFamilySet,
+            'textColor' => $this->getTextColor(),
+            'textColorSet' => $this->textColorSet,
+            'backgroundColor' => $this->getBackgroundColor(),
+            'backgroundColorSet' => $this->backgroundColorSet,
+        ];
+    }
+
     /**
      * @return string
      */
@@ -278,7 +307,9 @@ class TextStyle
         if ($this->sizeSet) {
             return $this->size;
         } else {
-            return $this->defaultStyle != null ? $this->defaultStyle->getSize() + $this->sizeDelta : DEF_TEXT_FONT_SIZE + $this->sizeDelta;
+            return $this->defaultStyle != null
+                ? $this->defaultStyle->getSize() + $this->sizeDelta
+                : DEF_TEXT_FONT_SIZE + $this->sizeDelta;
         }
     }
 
@@ -319,7 +350,9 @@ class TextStyle
         if ($this->fontFamilySet) {
             return $this->fontFamily;
         } else {
-            return $this->defaultStyle != null ? $this->defaultStyle->getFontFamily() : DEF_TEXT_FONT_FAMILY;
+            return $this->defaultStyle != null
+                ? $this->defaultStyle->getFontFamily()
+                : DEF_TEXT_FONT_FAMILY;
         }
     }
 
@@ -342,7 +375,9 @@ class TextStyle
         if ($this->textColorSet) {
             return $this->textColor;
         } else {
-            return $this->defaultStyle != null ? $this->defaultStyle->getTextColor() : "#000000";
+            return $this->defaultStyle != null
+                ? $this->defaultStyle->getTextColor()
+                : "#000000";
         }
     }
 
@@ -365,7 +400,9 @@ class TextStyle
         if ($this->backgroundColorSet) {
             return $this->backgroundColor;
         } else {
-            return $this->defaultStyle != null ? $this->defaultStyle->getBackgroundColor() : "#FFFFFF";
+            return $this->defaultStyle != null
+                ? $this->defaultStyle->getBackgroundColor()
+                : "#FFFFFF";
         }
     }
 
