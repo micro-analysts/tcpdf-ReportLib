@@ -122,10 +122,12 @@ class TextFrame extends ReportFrame
 
     /**
      * @param string $text
+     * @return self
      */
-    public function setText(string $text): void
+    public function setText(string $text): self
     {
         $this->text = $text;
+        return $this;
     }
 
 
@@ -139,10 +141,12 @@ class TextFrame extends ReportFrame
 
     /**
      * @param TextStyle $textStyle
+     * @return self
      */
-    public function setTextStyle(TextStyle $textStyle): void
+    public function setTextStyle(TextStyle $textStyle): self
     {
         $this->textStyle = $textStyle;
+        return $this;
     }
 
     /**
@@ -155,10 +159,12 @@ class TextFrame extends ReportFrame
 
     /**
      * @param float $minimumWidth
+     * @return self
      */
-    public function setMinimumWidth(float $minimumWidth): void
+    public function setMinimumWidth(float $minimumWidth): self
     {
         $this->minimumWidth = $minimumWidth;
+        return $this;
     }
 
     /**
@@ -171,10 +177,12 @@ class TextFrame extends ReportFrame
 
     /**
      * @param bool $wrapText
+     * @return self
      */
-    public function setWrapText(bool $wrapText): void
+    public function setWrapText(bool $wrapText): self
     {
         $this->wrapText = $wrapText;
+        return $this;
     }
 
     /**
@@ -193,11 +201,13 @@ class TextFrame extends ReportFrame
     /**
      * Overwrites the text color in the text style
      * @param string $textColor
+     * @return self
      */
-    public function setTextColor(string $textColor): void
+    public function setTextColor(string $textColor): self
     {
         $this->textColor = $textColor;
         $this->textColorSet = true;
+        return $this;
     }
 
     /**

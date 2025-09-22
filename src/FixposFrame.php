@@ -85,10 +85,12 @@ class FixposFrame extends ContainerFrame
 
     /**
      * @param float $offsetTop
+     * @return self
      */
-    public function setOffsetTop(float $offsetTop): void
+    public function setOffsetTop(float $offsetTop): self
     {
         $this->offsetTop = $offsetTop;
+        return $this;
     }
 
     /**
@@ -101,10 +103,12 @@ class FixposFrame extends ContainerFrame
 
     /**
      * @param float $offsetLeft
+     * @return self
      */
-    public function setOffsetLeft(float $offsetLeft): void
+    public function setOffsetLeft(float $offsetLeft): self
     {
         $this->offsetLeft = $offsetLeft;
+        return $this;
     }
 
     /**
@@ -117,10 +121,12 @@ class FixposFrame extends ContainerFrame
 
     /**
      * @param bool $overlay
+     * @return self
      */
-    public function setOverlay(bool $overlay): void
+    public function setOverlay(bool $overlay): self
     {
         $this->overlay = $overlay;
+        return $this;
     }
 
 

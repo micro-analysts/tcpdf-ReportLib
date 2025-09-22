@@ -207,10 +207,12 @@ class TableColumn
 
     /**
      * @param string $columnName
+     * @return self
      */
-    public function setColumnName(string $columnName): void
+    public function setColumnName(string $columnName): self
     {
         $this->columnName = $columnName;
+        return $this;
     }
 
     /**
@@ -223,10 +225,12 @@ class TableColumn
 
     /**
      * @param float $widthToUse
+     * @return self
      */
-    public function setWidthToUse(float $widthToUse): void
+    public function setWidthToUse(float $widthToUse): self
     {
         $this->widthToUse = $widthToUse;
+        return $this;
     }
 
     /**
@@ -247,10 +251,12 @@ class TableColumn
 
     /**
      * @param bool $sizeWidthToContents
+     * @return self
      */
-    public function setSizeWidthToContents(bool $sizeWidthToContents): void
+    public function setSizeWidthToContents(bool $sizeWidthToContents): self
     {
         $this->sizeWidthToContents = $sizeWidthToContents;
+        return $this;
     }
 
     /**
@@ -263,10 +269,12 @@ class TableColumn
 
     /**
      * @param bool $sizeWidthToHeader
+     * @return self
      */
-    public function setSizeWidthToHeader(bool $sizeWidthToHeader): void
+    public function setSizeWidthToHeader(bool $sizeWidthToHeader): self
     {
         $this->sizeWidthToHeader = $sizeWidthToHeader;
+        return $this;
     }
 
     /**
@@ -279,10 +287,12 @@ class TableColumn
 
     /**
      * @param Pen $rightPen
+     * @return self
      */
-    public function setRightPen(Pen $rightPen): void
+    public function setRightPen(Pen $rightPen): self
     {
         $this->rightPen = $rightPen;
+        return $this;
     }
 
     /**
@@ -295,10 +305,12 @@ class TableColumn
 
     /**
      * @param TextStyle $headerTextStyle
+     * @return self
      */
-    public function setHeaderTextStyle(TextStyle $headerTextStyle): void
+    public function setHeaderTextStyle(TextStyle $headerTextStyle): self
     {
         $this->headerTextStyle = $headerTextStyle;
+        return $this;
     }
 
     /**
@@ -311,10 +323,12 @@ class TableColumn
 
     /**
      * @param TextStyle $detailRowTextStyle
+     * @return self
      */
-    public function setDetailRowTextStyle(TextStyle $detailRowTextStyle): void
+    public function setDetailRowTextStyle(TextStyle $detailRowTextStyle): self
     {
         $this->detailRowTextStyle = $detailRowTextStyle;
+        return $this;
     }
 
     /**
@@ -327,10 +341,12 @@ class TableColumn
 
     /**
      * @param TextStyle $alternatingRowTextStyle
+     * @return self
      */
-    public function setAlternatingRowTextStyle(TextStyle $alternatingRowTextStyle): void
+    public function setAlternatingRowTextStyle(TextStyle $alternatingRowTextStyle): self
     {
         $this->alternatingRowTextStyle = $alternatingRowTextStyle;
+        return $this;
     }
 
     /**
@@ -343,10 +359,12 @@ class TableColumn
 
     /**
      * @param TextStyle $subTotalRowTextStyle
+     * @return self
      */
-    public function setSubTotalRowTextStyle(TextStyle $subTotalRowTextStyle): void
+    public function setSubTotalRowTextStyle(TextStyle $subTotalRowTextStyle): self
     {
         $this->subTotalRowTextStyle = $subTotalRowTextStyle;
+        return $this;
     }
 
     /**
@@ -359,10 +377,12 @@ class TableColumn
 
     /**
      * @param TextStyle $totalRowTextStyle
+     * @return self
      */
-    public function setTotalRowTextStyle(TextStyle $totalRowTextStyle): void
+    public function setTotalRowTextStyle(TextStyle $totalRowTextStyle): self
     {
         $this->totalRowTextStyle = $totalRowTextStyle;
+        return $this;
     }
 
     /**
@@ -375,10 +395,12 @@ class TableColumn
 
     /**
      * @param string $title
+     * @return self
      */
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
@@ -391,10 +413,12 @@ class TableColumn
 
     /**
      * @param string $hAlignment
+     * @return self
      */
-    public function setHAlignment(string $hAlignment): void
+    public function setHAlignment(string $hAlignment): self
     {
         $this->hAlignment = $hAlignment;
+        return $this;
     }
 
     /**
@@ -407,10 +431,12 @@ class TableColumn
 
     /**
      * @param string $vAlignment
+     * @return self
      */
-    public function setVAlignment(string $vAlignment): void
+    public function setVAlignment(string $vAlignment): self
     {
         $this->vAlignment = $vAlignment;
+        return $this;
     }
 
     /**
@@ -423,10 +449,12 @@ class TableColumn
 
     /**
      * @param float $paddingLeft
+     * @return self
      */
-    public function setPaddingLeft(float $paddingLeft): void
+    public function setPaddingLeft(float $paddingLeft): self
     {
         $this->paddingLeft = $paddingLeft;
+        return $this;
     }
 
     /**
@@ -439,10 +467,12 @@ class TableColumn
 
     /**
      * @param float $paddingRight
+     * @return self
      */
-    public function setPaddingRight(float $paddingRight): void
+    public function setPaddingRight(float $paddingRight): self
     {
         $this->paddingRight = $paddingRight;
+        return $this;
     }
 
     /**
@@ -455,10 +485,12 @@ class TableColumn
 
     /**
      * @param float $paddingTop
+     * @return self
      */
-    public function setPaddingTop(float $paddingTop): void
+    public function setPaddingTop(float $paddingTop): self
     {
         $this->paddingTop = $paddingTop;
+        return $this;
     }
 
     /**
@@ -471,10 +503,12 @@ class TableColumn
 
     /**
      * @param float $paddingBottom
+     * @return self
      */
-    public function setPaddingBottom(float $paddingBottom): void
+    public function setPaddingBottom(float $paddingBottom): self
     {
         $this->paddingBottom = $paddingBottom;
+        return $this;
     }
 
     /**
@@ -487,10 +521,12 @@ class TableColumn
 
     /**
      * @param bool $lineBreak
+     * @return self
      */
-    public function setLineBreak(bool $lineBreak): void
+    public function setLineBreak(bool $lineBreak): self
     {
         $this->lineBreak = $lineBreak;
+        return $this;
     }
 
     /**

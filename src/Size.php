@@ -69,11 +69,12 @@ class Size
     /**
      * @param float $width
      * @param float $height
-     * @return void
+     * @return $this
      */
-    public function setSize(float $width = 0.0, float $height = 0.0): void
+    public function setSize(float $width = 0.0, float $height = 0.0): self
     {
         $this->width = $width;
         $this->height = $height;
+        return $this;
     }
 }

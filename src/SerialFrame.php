@@ -68,10 +68,12 @@ class SerialFrame extends ContainerFrame
 
     /**
      * @param string $direction
+     * @return $this
      */
-    public function setDirection(string $direction): void
+    public function setDirection(string $direction): self
     {
         $this->direction = $direction;
+        return $this;
     }
 
 

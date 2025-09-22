@@ -187,10 +187,12 @@ class Report
 
     /**
      * @param bool $countPages
+     * @return self
      */
-    public function setCountPages(bool $countPages): void
+    public function setCountPages(bool $countPages): self
     {
         $this->countPages = $countPages;
+        return $this;
     }
 
     /**

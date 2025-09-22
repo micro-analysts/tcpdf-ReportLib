@@ -46,13 +46,13 @@ include_once "Size.php";
 class PageFormat
 {
     /**
-     * Page orientation
+     * Page orientation ("P" or "L")
      * @var string
      */
     protected string $pageOrientation;
 
     /**
-     * Page size (e.g. 'A4'
+     * Page size (e.g. 'A4')
      * @var string
      */
     protected string $pageSize;
@@ -110,18 +110,22 @@ class PageFormat
 
     /**
      * @param string $pageOrientation
+     * @return self
      */
-    public function setPageOrientation(string $pageOrientation): void
+    public function setPageOrientation(string $pageOrientation): self
     {
         $this->pageOrientation = $pageOrientation;
+        return $this;
     }
 
     /**
      * @param string $pageSize
+     * @return self
      */
-    public function setPageSize(string $pageSize): void
+    public function setPageSize(string $pageSize): self
     {
         $this->pageSize = $pageSize;
+        return $this;
     }
 
     /**
@@ -150,10 +154,12 @@ class PageFormat
 
     /**
      * @param float $marginTop
+     * @return self
      */
-    public function setMarginTop(float $marginTop): void
+    public function setMarginTop(float $marginTop): self
     {
         $this->marginTop = $marginTop;
+        return $this;
     }
 
     /**
@@ -166,10 +172,12 @@ class PageFormat
 
     /**
      * @param float $marginLeft
+     * @return self
      */
-    public function setMarginLeft(float $marginLeft): void
+    public function setMarginLeft(float $marginLeft): self
     {
         $this->marginLeft = $marginLeft;
+        return $this;
     }
 
     /**
@@ -182,10 +190,12 @@ class PageFormat
 
     /**
      * @param float $marginRight
+     * @return self
      */
-    public function setMarginRight(float $marginRight): void
+    public function setMarginRight(float $marginRight): self
     {
         $this->marginRight = $marginRight;
+        return $this;
     }
 
     /**
@@ -198,10 +208,12 @@ class PageFormat
 
     /**
      * @param float $marginBottom
+     * @return self
      */
-    public function setMarginBottom(float $marginBottom): void
+    public function setMarginBottom(float $marginBottom): self
     {
         $this->marginBottom = $marginBottom;
+        return $this;
     }
 
     /**
@@ -214,9 +226,11 @@ class PageFormat
 
     /**
      * @param bool $mirrorMargins
+     * @return self
      */
-    public function setMirrorMargins(bool $mirrorMargins): void
+    public function setMirrorMargins(bool $mirrorMargins): self
     {
         $this->mirrorMargins = $mirrorMargins;
+        return $this;
     }
 }

@@ -90,10 +90,12 @@ class PageFrame extends ContainerFrame
 
     /**
      * @param int $onPageNr
+     * @return $this
      */
-    public function setOnPageNr(int $onPageNr): void
+    public function setOnPageNr(int $onPageNr): self
     {
         $this->onPageNr = $onPageNr;
+        return $this;
     }
 
     /**

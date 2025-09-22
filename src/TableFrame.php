@@ -268,10 +268,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $marginBottomSubtotal
+     * @return self
      */
-    public function setMarginBottomSubtotal(float $marginBottomSubtotal): void
+    public function setMarginBottomSubtotal(float $marginBottomSubtotal): self
     {
         $this->marginBottomSubtotal = $marginBottomSubtotal;
+        return $this;
     }
 
     /**
@@ -284,10 +286,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param bool $repeatHeaderRow
+     * @return self
      */
-    public function setRepeatHeaderRow(bool $repeatHeaderRow): void
+    public function setRepeatHeaderRow(bool $repeatHeaderRow): self
     {
         $this->repeatHeaderRow = $repeatHeaderRow;
+        return $this;
     }
 
     /**
@@ -300,10 +304,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param bool $suppressHeaderRow
+     * @return self
      */
-    public function setSuppressHeaderRow(bool $suppressHeaderRow): void
+    public function setSuppressHeaderRow(bool $suppressHeaderRow): self
     {
         $this->suppressHeaderRow = $suppressHeaderRow;
+        return $this;
     }
 
     /**
@@ -316,10 +322,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $minHeaderRowHeight
+     * @return self
      */
-    public function setMinHeaderRowHeight(float $minHeaderRowHeight): void
+    public function setMinHeaderRowHeight(float $minHeaderRowHeight): self
     {
         $this->minHeaderRowHeight = $minHeaderRowHeight;
+        return $this;
     }
 
     /**
@@ -332,10 +340,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $minDetailRowHeight
+     * @return self
      */
-    public function setMinDetailRowHeight(float $minDetailRowHeight): void
+    public function setMinDetailRowHeight(float $minDetailRowHeight): self
     {
         $this->minDetailRowHeight = $minDetailRowHeight;
+        return $this;
     }
 
     /**
@@ -348,10 +358,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $maxHeaderRowHeight
+     * @return self
      */
-    public function setMaxHeaderRowHeight(float $maxHeaderRowHeight): void
+    public function setMaxHeaderRowHeight(float $maxHeaderRowHeight): self
     {
         $this->maxHeaderRowHeight = $maxHeaderRowHeight;
+        return $this;
     }
 
     /**
@@ -364,10 +376,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $maxDetailRowHeight
+     * @return self
      */
-    public function setMaxDetailRowHeight(float $maxDetailRowHeight): void
+    public function setMaxDetailRowHeight(float $maxDetailRowHeight): self
     {
         $this->maxDetailRowHeight = $maxDetailRowHeight;
+        return $this;
     }
 
     /**
@@ -380,10 +394,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param TextStyle $headerTextStyle
+     * @return self
      */
-    public function setHeaderTextStyle(TextStyle $headerTextStyle): void
+    public function setHeaderTextStyle(TextStyle $headerTextStyle): self
     {
         $this->headerTextStyle = $headerTextStyle;
+        return $this;
     }
 
     /**
@@ -396,10 +412,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param TextStyle $detailRowTextStyle
+     * @return self
      */
-    public function setDetailRowTextStyle(TextStyle $detailRowTextStyle): void
+    public function setDetailRowTextStyle(TextStyle $detailRowTextStyle): self
     {
         $this->detailRowTextStyle = $detailRowTextStyle;
+        return $this;
     }
 
     /**
@@ -412,10 +430,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param TextStyle $subTotalRowTextStyle
+     * @return self
      */
-    public function setSubTotalRowTextStyle(TextStyle $subTotalRowTextStyle): void
+    public function setSubTotalRowTextStyle(TextStyle $subTotalRowTextStyle): self
     {
         $this->subTotalRowTextStyle = $subTotalRowTextStyle;
+        return $this;
     }
 
     /**
@@ -428,10 +448,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param TextStyle $totalRowTextStyle
+     * @return self
      */
-    public function setTotalRowTextStyle(TextStyle $totalRowTextStyle): void
+    public function setTotalRowTextStyle(TextStyle $totalRowTextStyle): self
     {
         $this->totalRowTextStyle = $totalRowTextStyle;
+        return $this;
     }
 
     /**
@@ -444,10 +466,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param TextStyle|null $alternatingRowTextStyle
+     * @return self
      */
-    public function setAlternatingRowTextStyle(?TextStyle $alternatingRowTextStyle): void
+    public function setAlternatingRowTextStyle(?TextStyle $alternatingRowTextStyle): self
     {
         $this->alternatingRowTextStyle = $alternatingRowTextStyle;
+        return $this;
     }
 
     /**
@@ -460,10 +484,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param Border $border
+     * @return self
      */
-    public function setBorder(Border $border): void
+    public function setBorder(Border $border): self
     {
         $this->border = $border;
+        return $this;
     }
 
     /**
@@ -476,10 +502,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param Pen $innerPenHeaderBottom
+     * @return self
      */
-    public function setInnerPenHeaderBottom(Pen $innerPenHeaderBottom): void
+    public function setInnerPenHeaderBottom(Pen $innerPenHeaderBottom): self
     {
         $this->innerPenHeaderBottom = $innerPenHeaderBottom;
+        return $this;
     }
 
     /**
@@ -492,10 +520,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param Pen $innerPenTotalTop
+     * @return self
      */
-    public function setInnerPenTotalTop(Pen $innerPenTotalTop): void
+    public function setInnerPenTotalTop(Pen $innerPenTotalTop): self
     {
         $this->innerPenTotalTop = $innerPenTotalTop;
+        return $this;
     }
 
     /**
@@ -508,10 +538,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param Pen $innerPenRow
+     * @return self
      */
-    public function setInnerPenRow(Pen $innerPenRow): void
+    public function setInnerPenRow(Pen $innerPenRow): self
     {
         $this->innerPenRow = $innerPenRow;
+        return $this;
     }
 
     /**
@@ -524,10 +556,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param float $interRowSpace
+     * @return self
      */
-    public function setInterRowSpace(float $interRowSpace): void
+    public function setInterRowSpace(float $interRowSpace): self
     {
         $this->interRowSpace = $interRowSpace;
+        return $this;
     }
 
     /**
@@ -540,10 +574,12 @@ class TableFrame extends ReportFrame
 
     /**
      * @param bool $columnLines
+     * @return self
      */
-    public function setColumnLines(bool $columnLines): void
+    public function setColumnLines(bool $columnLines): self
     {
         $this->columnLines = $columnLines;
+        return $this;
     }
 
 
@@ -1132,9 +1168,9 @@ class TableFrame extends ReportFrame
      * @param int $row The row to which the sub row belongs
      * @param int $subRow The number of the sub row
      * @param float $height The height of the sub row
-     * @return void
+     * @return self
      */
-    public function setSubRowHeight(int $row, int $subRow, float $height): void
+    public function setSubRowHeight(int $row, int $subRow, float $height): self
     {
         if (key_exists($row, $this->subRowHeightList)) {
             $this->subRowHeightList[$row][$subRow] = $height;
@@ -1142,6 +1178,7 @@ class TableFrame extends ReportFrame
             $this->subRowHeightList[$row] = array();
             $this->subRowHeightList[$row][$subRow] = $height;
         }
+        return $this;
     }
 
     /**

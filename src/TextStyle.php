@@ -196,11 +196,12 @@ class TextStyle
 
     /**
      * @param string $name
-     * @return void
+     * @return self
      */
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -216,12 +217,13 @@ class TextStyle
 
     /**
      * @param bool $bold
-     * @return void
+     * @return self
      */
-    public function setBold(bool $bold): void
+    public function setBold(bool $bold): self
     {
         $this->boldSet = true;
         $this->bold = $bold;
+        return $this;
     }
 
     /**
@@ -237,12 +239,13 @@ class TextStyle
 
     /**
      * @param bool $italic
-     * @return void
+     * @return self
      */
-    public function setItalic(bool $italic): void
+    public function setItalic(bool $italic): self
     {
         $this->italicSet = true;
         $this->italic = $italic;
+        return $this;
     }
 
     /**
@@ -258,12 +261,13 @@ class TextStyle
 
     /**
      * @param bool $underline
-     * @return void
+     * @return self
      */
-    public function setUnderline(bool $underline): void
+    public function setUnderline(bool $underline): self
     {
         $this->underlineSet = true;
         $this->underline = $underline;
+        return $this;
     }
 
     /**
@@ -280,12 +284,13 @@ class TextStyle
 
     /**
      * @param float $size
-     * @return void
+     * @return self
      */
-    public function setSize(float $size): void
+    public function setSize(float $size): self
     {
         $this->sizeSet = true;
         $this->size = $size;
+        return $this;
     }
 
     /**
@@ -298,11 +303,12 @@ class TextStyle
 
     /**
      * @param float $sizeDelta
-     * @return void
+     * @return self
      */
-    public function setSizeDelta(float $sizeDelta): void
+    public function setSizeDelta(float $sizeDelta): self
     {
         $this->sizeDelta = $sizeDelta;
+        return $this;
     }
 
     /**
@@ -319,12 +325,13 @@ class TextStyle
 
     /**
      * @param string $fontFamily
-     * @return void
+     * @return self
      */
-    public function setFontFamily(string $fontFamily): void
+    public function setFontFamily(string $fontFamily): self
     {
         $this->fontFamilySet = true;
         $this->fontFamily = $fontFamily;
+        return $this;
     }
 
     /**
@@ -341,12 +348,13 @@ class TextStyle
 
     /**
      * @param string $textColor
-     * @return void
+     * @return self
      */
-    public function setTextColor(string $textColor): void
+    public function setTextColor(string $textColor): self
     {
         $this->textColorSet = true;
         $this->textColor = $textColor;
+        return $this;
     }
 
     /**
@@ -363,11 +371,12 @@ class TextStyle
 
     /**
      * @param string $backgroundColor
-     * @return void
+     * @return self
      */
-    public function setBackgroundColor(string $backgroundColor): void
+    public function setBackgroundColor(string $backgroundColor): self
     {
         $this->backgroundColorSet = true;
         $this->backgroundColor = $backgroundColor;
+        return $this;
     }
 }

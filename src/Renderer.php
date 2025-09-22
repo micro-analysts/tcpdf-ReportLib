@@ -189,11 +189,12 @@ class Renderer
      * Sets the pageFormat that will be used from a given page on
      * @param int $fromPage
      * @param PageFormat $pageFormat
-     * @return void
+     * @return self
      */
-    public function setPageFormat(int $fromPage, PageFormat $pageFormat): void
+    public function setPageFormat(int $fromPage, PageFormat $pageFormat): self
     {
         $this->pageFormats[$fromPage] = $pageFormat;
+        return $this;
     }
 
     /**
@@ -244,10 +245,12 @@ class Renderer
     /**
      * Sets the flag that the pages are counted
      * @param bool $pagesCounted
+     * @return self
      */
-    public function setPagesCounted(bool $pagesCounted): void
+    public function setPagesCounted(bool $pagesCounted): self
     {
         $this->pagesCounted = $pagesCounted;
+        return $this;
     }
 
     /**

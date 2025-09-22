@@ -115,11 +115,12 @@ class TableRow
      * Sets the value for a column in this row
      * @param string $columnName
      * @param string $value
-     * @return void
+     * @return self
      */
-    public function setText(string $columnName, string $value): void
+    public function setText(string $columnName, string $value): self
     {
         $this->data[$columnName] = $value;
+        return $this;
     }
 
     /**
@@ -135,10 +136,12 @@ class TableRow
      * Sets the data for the whole row
      * Can be used if the data for the rows will be created somewhere else (e.g. database query)
      * @param array $data
+     * @return self
      */
-    public function setData(array $data): void
+    public function setData(array $data): self
     {
         $this->data = $data;
+        return $this;
     }
 
     /**
@@ -151,10 +154,12 @@ class TableRow
 
     /**
      * @param string $rowType
+     * @return self
      */
-    public function setRowType(string $rowType): void
+    public function setRowType(string $rowType): self
     {
         $this->rowType = $rowType;
+        return $this;
     }
 
     /**
@@ -167,10 +172,12 @@ class TableRow
 
     /**
      * @param int $joinStart
+     * @return self
      */
-    public function setJoinStart(int $joinStart): void
+    public function setJoinStart(int $joinStart): self
     {
         $this->joinStart = $joinStart;
+        return $this;
     }
 
     /**
@@ -183,15 +190,18 @@ class TableRow
 
     /**
      * @param int $joinEnd
+     * @return self
      */
-    public function setJoinEnd(int $joinEnd): void
+    public function setJoinEnd(int $joinEnd): self
     {
         $this->joinEnd = $joinEnd;
+        return $this;
     }
 
-    public function setHAlignment(string $fieldName, ?string $alignment): void
+    public function setHAlignment(string $fieldName, ?string $alignment): self
     {
         $this->hAlignments[$fieldName] = $alignment;
+        return $this;
     }
 
     public function getHAlignment(string $fieldName): ?string
@@ -199,9 +209,10 @@ class TableRow
         return $this->hAlignments[$fieldName] ?? null;
     }
 
-    public function setVAlignment(string $fieldName, ?string $alignment): void
+    public function setVAlignment(string $fieldName, ?string $alignment): self
     {
         $this->vAlignments[$fieldName] = $alignment;
+        return $this;
     }
 
     public function getVAlignment(string $fieldName): ?string

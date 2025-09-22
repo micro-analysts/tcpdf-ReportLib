@@ -101,10 +101,12 @@ class BarcodeFrame extends ReportFrame
 
     /**
      * @param string $barcodeText
+     * @return $this
      */
-    public function setBarcodeText(string $barcodeText): void
+    public function setBarcodeText(string $barcodeText): self
     {
         $this->barcodeText = $barcodeText;
+        return $this;
     }
 
     /**
@@ -117,10 +119,12 @@ class BarcodeFrame extends ReportFrame
 
     /**
      * @param string $barcodeType
+     * @return $this
      */
-    public function setBarcodeType(string $barcodeType): void
+    public function setBarcodeType(string $barcodeType): self
     {
         $this->barcodeType = $barcodeType;
+        return $this;
     }
 
     /**
@@ -133,10 +137,12 @@ class BarcodeFrame extends ReportFrame
 
     /**
      * @param float $width
+     * @return $this
      */
-    public function setWidth(float $width): void
+    public function setWidth(float $width): self
     {
         $this->width = $width;
+        return $this;
     }
 
     /**
@@ -149,10 +155,12 @@ class BarcodeFrame extends ReportFrame
 
     /**
      * @param float $height
+     * @return $this
      */
-    public function setHeight(float $height): void
+    public function setHeight(float $height): self
     {
         $this->height = $height;
+        return $this;
     }
 
     /**

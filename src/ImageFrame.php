@@ -101,10 +101,12 @@ class ImageFrame extends ReportFrame
 
     /**
      * @param string $fileName
+     * @return self
      */
-    public function setFileName(string $fileName): void
+    public function setFileName(string $fileName): self
     {
         $this->fileName = $fileName;
+        return $this;
     }
 
     /**
@@ -117,10 +119,12 @@ class ImageFrame extends ReportFrame
 
     /**
      * @param bool $preserveAspectRatio
+     * @return self
      */
-    public function setPreserveAspectRatio(bool $preserveAspectRatio): void
+    public function setPreserveAspectRatio(bool $preserveAspectRatio): self
     {
         $this->preserveAspectRatio = $preserveAspectRatio;
+        return $this;
     }
 
 

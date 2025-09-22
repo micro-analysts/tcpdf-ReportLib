@@ -82,10 +82,12 @@ class Pen
 
     /**
      * @param float $extent
+     * @return $this
      */
-    public function setExtent(float $extent): void
+    public function setExtent(float $extent): self
     {
         $this->extent = $extent;
+        return $this;
     }
 
     /**
@@ -98,10 +100,12 @@ class Pen
 
     /**
      * @param string $color
+     * @return $this
      */
-    public function setColor(string $color): void
+    public function setColor(string $color): self
     {
         $this->color = $color;
+        return $this;
     }
 
     /**
@@ -118,11 +122,13 @@ class Pen
      *   <li>"0" is a solid line</li>
      * </ul>
      * @param string $dash
+     * @return $this
      * @see TCPDF
      */
-    public function setDash(string $dash): void
+    public function setDash(string $dash): self
     {
         $this->dash = $dash;
+        return $this;
     }
 
     /**

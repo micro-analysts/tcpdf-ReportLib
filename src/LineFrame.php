@@ -115,10 +115,12 @@ class LineFrame extends ReportFrame
 
     /**
      * @param Pen $pen
+     * @return self
      */
-    public function setPen(Pen $pen): void
+    public function setPen(Pen $pen): self
     {
         $this->pen = $pen;
+        return $this;
     }
 
     /**
@@ -131,10 +133,12 @@ class LineFrame extends ReportFrame
 
     /**
      * @param float $length
+     * @return self
      */
-    public function setLength(float $length): void
+    public function setLength(float $length): self
     {
         $this->length = $length;
+        return $this;
     }
 
     /**
@@ -147,10 +151,12 @@ class LineFrame extends ReportFrame
 
     /**
      * @param string $direction
+     * @return self
      */
-    public function setDirection(string $direction): void
+    public function setDirection(string $direction): self
     {
         $this->direction = $direction;
+        return $this;
     }
 
     /**

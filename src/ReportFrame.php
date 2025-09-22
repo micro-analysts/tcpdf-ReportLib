@@ -191,10 +191,12 @@ abstract class ReportFrame
 
     /**
      * @param ReportFrame|null $parentFrame
+     * @return self
      */
-    public function setParentFrame(?ReportFrame $parentFrame): void
+    public function setParentFrame(?ReportFrame $parentFrame): self
     {
         $this->parentFrame = $parentFrame;
+        return $this;
     }
 
     /**
@@ -207,10 +209,12 @@ abstract class ReportFrame
 
     /**
      * @param string $hAlignment
+     * @return self
      */
-    public function setHAlignment(string $hAlignment): void
+    public function setHAlignment(string $hAlignment): self
     {
         $this->hAlignment = $hAlignment;
+        return $this;
     }
 
     /**
@@ -223,10 +227,12 @@ abstract class ReportFrame
 
     /**
      * @param string $vAlignment
+     * @return self
      */
-    public function setVAlignment(string $vAlignment): void
+    public function setVAlignment(string $vAlignment): self
     {
         $this->vAlignment = $vAlignment;
+        return $this;
     }
 
     /**
@@ -239,10 +245,12 @@ abstract class ReportFrame
 
     /**
      * @param bool $useFullHeight
+     * @return self
      */
-    public function setUseFullHeight(bool $useFullHeight): void
+    public function setUseFullHeight(bool $useFullHeight): self
     {
         $this->useFullHeight = $useFullHeight;
+        return $this;
     }
 
     /**
@@ -255,10 +263,12 @@ abstract class ReportFrame
 
     /**
      * @param bool $useFullWidth
+     * @return self
      */
-    public function setUseFullWidth(bool $useFullWidth): void
+    public function setUseFullWidth(bool $useFullWidth): self
     {
         $this->useFullWidth = $useFullWidth;
+        return $this;
     }
 
     /**
@@ -271,10 +281,12 @@ abstract class ReportFrame
 
     /**
      * @param float $marginLeft
+     * @return self
      */
-    public function setMarginLeft(float $marginLeft): void
+    public function setMarginLeft(float $marginLeft): self
     {
         $this->marginLeft = $marginLeft;
+        return $this;
     }
 
     /**
@@ -287,10 +299,12 @@ abstract class ReportFrame
 
     /**
      * @param float $marginTop
+     * @return self
      */
-    public function setMarginTop(float $marginTop): void
+    public function setMarginTop(float $marginTop): self
     {
         $this->marginTop = $marginTop;
+        return $this;
     }
 
     /**
@@ -303,10 +317,12 @@ abstract class ReportFrame
 
     /**
      * @param float $marginRight
+     * @return self
      */
-    public function setMarginRight(float $marginRight): void
+    public function setMarginRight(float $marginRight): self
     {
         $this->marginRight = $marginRight;
+        return $this;
     }
 
     /**
@@ -319,10 +335,12 @@ abstract class ReportFrame
 
     /**
      * @param float $marginBottom
+     * @return self
      */
-    public function setMarginBottom(float $marginBottom): void
+    public function setMarginBottom(float $marginBottom): self
     {
         $this->marginBottom = $marginBottom;
+        return $this;
     }
 
     /**
@@ -335,10 +353,12 @@ abstract class ReportFrame
 
     /**
      * @param float $maxWidth
+     * @return self
      */
-    public function setMaxWidth(float $maxWidth): void
+    public function setMaxWidth(float $maxWidth): self
     {
         $this->maxWidth = $maxWidth;
+        return $this;
     }
 
     /**
@@ -351,10 +371,12 @@ abstract class ReportFrame
 
     /**
      * @param float $maxHeight
+     * @return self
      */
-    public function setMaxHeight(float $maxHeight): void
+    public function setMaxHeight(float $maxHeight): self
     {
         $this->maxHeight = $maxHeight;
+        return $this;
     }
 
     /**
@@ -367,10 +389,12 @@ abstract class ReportFrame
 
     /**
      * @param bool $keepTogether
+     * @return self
      */
-    public function setKeepTogether(bool $keepTogether): void
+    public function setKeepTogether(bool $keepTogether): self
     {
         $this->keepTogether = $keepTogether;
+        return $this;
     }
 
     /**
@@ -404,14 +428,15 @@ abstract class ReportFrame
     /**
      * Sets all four margins to the same given value
      * @param float $val
-     * @return void
+     * @return self
      */
-    public function setMargin(float $val): void
+    public function setMargin(float $val): self
     {
         $this->marginTop = $val;
         $this->marginRight = $val;
         $this->marginBottom = $val;
         $this->marginLeft = $val;
+        return $this;
     }
 
     /**
@@ -580,9 +605,9 @@ abstract class ReportFrame
      * Sets the size
      * @param Size $requiredSize
      * @param Rect $rect
-     * @return void
+     * @return self
      */
-    public function setSize(Size $requiredSize, Rect $rect): void
+    public function setSize(Size $requiredSize, Rect $rect): self
     {
         $this->requiredSize = new Size(size: $requiredSize);
         $this->size = new Size();
@@ -607,6 +632,7 @@ abstract class ReportFrame
             $this->size->height = min($this->size->height, $this->maxHeight);
         }
         $this->size->height = min($this->size->height, $rect->getHeight());
+        return $this;
     }
 
     /**

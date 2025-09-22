@@ -199,11 +199,12 @@ class BoxFrame extends ContainerFrame
      * Defines a pen for the border. All four sides
      * of the border will use the same pen.
      * @param Pen $val
-     * @return void
+     * @return self
      */
-    public function setBorderPen(Pen $val): void
+    public function setBorderPen(Pen $val): self
     {
         $this->border->setPen($val);
+        return $this;
     }
 
     /**
@@ -219,39 +220,42 @@ class BoxFrame extends ContainerFrame
     /**
      * Sets the padding on all sides to the same value
      * @param float $val
-     * @return void
+     * @return self
      */
-    public function setPadding(float $val): void
+    public function setPadding(float $val): self
     {
         $this->paddingTop = $val;
         $this->paddingRight = $val;
         $this->paddingBottom = $val;
         $this->paddingLeft = $val;
+        return $this;
     }
 
     /**
      * @param float|string $width Width of the box in mm or % - float->mm, string->"%"
-     * @return void
+     * @return self
      */
-    public function setWidth(mixed $width): void
+    public function setWidth(mixed $width): self
     {
         $this->width = floatval($width);
         if (is_string($width)) {
             $this->widthInPercent = true;
         }
+        return $this;
     }
 
     /**
      * @param float|string $height Height of the box in mm or % - float->mm, string->"%"
-     * @return void
+     * @return self
      */
-    public function setHeight(mixed $height): void
+    public function setHeight(mixed $height): self
     {
         $this->heightInPercent = false;
         $this->height = floatval($height);
         if (is_string($height)) {
             $this->heightInPercent = true;
         }
+        return $this;
     }
 
     /**
@@ -264,10 +268,12 @@ class BoxFrame extends ContainerFrame
 
     /**
      * @param float $paddingTop
+     * @return self
      */
-    public function setPaddingTop(float $paddingTop): void
+    public function setPaddingTop(float $paddingTop): self
     {
         $this->paddingTop = $paddingTop;
+        return $this;
     }
 
     /**
@@ -280,10 +286,12 @@ class BoxFrame extends ContainerFrame
 
     /**
      * @param float $paddingRight
+     * @return self
      */
-    public function setPaddingRight(float $paddingRight): void
+    public function setPaddingRight(float $paddingRight): self
     {
         $this->paddingRight = $paddingRight;
+        return $this;
     }
 
     /**
@@ -296,10 +304,12 @@ class BoxFrame extends ContainerFrame
 
     /**
      * @param float $paddingBottom
+     * @return self
      */
-    public function setPaddingBottom(float $paddingBottom): void
+    public function setPaddingBottom(float $paddingBottom): self
     {
         $this->paddingBottom = $paddingBottom;
+        return $this;
     }
 
     /**
@@ -312,10 +322,12 @@ class BoxFrame extends ContainerFrame
 
     /**
      * @param float $paddingLeft
+     * @return self
      */
-    public function setPaddingLeft(float $paddingLeft): void
+    public function setPaddingLeft(float $paddingLeft): self
     {
         $this->paddingLeft = $paddingLeft;
+        return $this;
     }
 
     /**
@@ -328,10 +340,12 @@ class BoxFrame extends ContainerFrame
 
     /**
      * @param string $background
+     * @return self
      */
-    public function setBackground(string $background): void
+    public function setBackground(string $background): self
     {
         $this->background = $background;
+        return $this;
     }
 
     /**

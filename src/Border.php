@@ -107,15 +107,16 @@ class Border
      * The pen will be cloned so the pen of each edge can be changed individually.
      * Getter and setter for the pens are available.
      * @param Pen $pen Pen to use to draw the border
-     * @return void
+     * @return $this
      * @see Pen
      */
-    public function setPen(Pen $pen): void
+    public function setPen(Pen $pen): self
     {
         $this->topPen = clone $pen;
         $this->leftPen = clone $pen;
         $this->rightPen = clone $pen;
         $this->bottomPen = clone $pen;
+        return $this;
     }
 
     /**
@@ -161,10 +162,12 @@ class Border
 
     /**
      * @param Pen $topPen
+     * @return $this
      */
-    public function setTopPen(Pen $topPen): void
+    public function setTopPen(Pen $topPen): self
     {
         $this->topPen = $topPen;
+        return $this;
     }
 
     /**
@@ -177,10 +180,12 @@ class Border
 
     /**
      * @param Pen $leftPen
+     * @return $this
      */
-    public function setLeftPen(Pen $leftPen): void
+    public function setLeftPen(Pen $leftPen): self
     {
         $this->leftPen = $leftPen;
+        return $this;
     }
 
     /**
@@ -193,10 +198,12 @@ class Border
 
     /**
      * @param Pen $rightPen
+     * @return $this
      */
-    public function setRightPen(Pen $rightPen): void
+    public function setRightPen(Pen $rightPen): self
     {
         $this->rightPen = $rightPen;
+        return $this;
     }
 
     /**
@@ -209,10 +216,12 @@ class Border
 
     /**
      * @param Pen $bottomPen
+     * @return $this
      */
-    public function setBottomPen(Pen $bottomPen): void
+    public function setBottomPen(Pen $bottomPen): self
     {
         $this->bottomPen = $bottomPen;
+        return $this;
     }
 
 

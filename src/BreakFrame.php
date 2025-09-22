@@ -83,10 +83,12 @@ class BreakFrame extends ReportFrame
 
     /**
      * @param ?PageFormat $pageFormat
+     * @return self
      */
-    public function setPageFormat(?PageFormat $pageFormat): void
+    public function setPageFormat(?PageFormat $pageFormat): self
     {
         $this->pageFormat = $pageFormat;
+        return $this;
     }
 
     /**
